@@ -1,5 +1,12 @@
 ## How to run this repo locally
 
+0. **Set-up**
+
+    Make sure you have installed the following requirements
+    - [Maven](https://maven.apache.org/download.cgi)
+    - [NodeJS](https://nodejs.org/en/download/)
+    - [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable)
+
 1. **Clone the repo**
     ```
     git clone https://github.com/JohnLi1999/Cupcake-Shop.git
