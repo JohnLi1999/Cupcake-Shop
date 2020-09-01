@@ -1,0 +1,88 @@
+.cake-detail-name {
+  margin-top: 60px;
+  margin-bottom: 10px;
+  color: #ff9900;
+  font-size: 60px;
+  font-weight: 500;
+}
+
+.cake-detail-category {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #993333;
+}
+
+.cake-detail-description {
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: #8c8c8c;
+}
+
+.cake-detail-price {
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.cake-detail-button {
+  margin: 20px;
+  padding: 8px 15px;
+  border: 2px solid #f2f2f2;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #993366;
+  font-size: 20px;
+}
+
+.cake-detail-button:hover {
+  border-color: #993366;
+  color: #993366;
+  background-color: #ffffff;
+}
+
+.cake-detail-image-area {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.cake-detail-slide {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+}
+
+.cake-detail-image {
+  width: 100%;
+  height: 100%;
+  margin: 5px auto;
+  border: 2px solid #d9d9d9;
+  border-radius: 3px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.cake-detail-image-active,
+.cake-detail-image:hover {
+  opacity: 1;
+}
+
+.cake-detail-category-list {
+  margin-top: 100px;
+}
+
+.cake-detail-category-list-title {
+  font-size: 25px;
+  margin-left: 17px;
+  margin-bottom: 30px;
+}
+
+.cake-detail-category-list .list-group .list-group-item {
+  background-color: #f2f2f2;
+}
+
+.cake-detail-category-list .list-group .list-group-item:hover {
+  color: #ffffff;
+  background-color: #993333;
+}
