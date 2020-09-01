@@ -2,7 +2,7 @@
 
 - **Set-up**
 
-    Make sure you have installed the following requirements
+    Make sure you have installed the following environments and tools
     - [Maven](https://maven.apache.org/download.cgi)
     - [NodeJS](https://nodejs.org/en/download/)
     - [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable)
