@@ -22,7 +22,7 @@ public class CategoryController {
     }
 
     @PostMapping("/one")
-//    @RolesAllowed("ROLE_ADMIN")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<?> addCategory(@Valid @RequestBody CategoryRequest categoryRequest) {
         ApiResponse response = categoryService.addCategory(categoryRequest);
 

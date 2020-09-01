@@ -22,7 +22,7 @@ public class CakeController {
     }
 
     @PostMapping("/one")
-//    @RolesAllowed("ROLE_ADMIN")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<?> addCake(@Valid @RequestBody CakeRequest cakeRequest) {
         ApiResponse response = cakeService.addCake(cakeRequest);
 
