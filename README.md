@@ -3,7 +3,7 @@
 1. **Clone the repo**
     ```
     git clone https://github.com/JohnLi1999/Cupcake-Shop.git
-    cd Demo_React_SpringBoot
+    cd Cupcake-Shop
     ```
 
 2. **Create MySQL database**
