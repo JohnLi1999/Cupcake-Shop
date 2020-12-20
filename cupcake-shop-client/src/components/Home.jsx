@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { TODAY_SPECIAL, BEST_SELLING } from '../constants/constants';
-import { addItemToTempCart } from '../util/tempCart';
 import { isAuthenticated } from '../util/auth';
+import { filterByTag } from '../util/cakes';
+import { addItemToTempCart } from '../util/tempCart';
 
 const FullWidthContainer = styled(Container)`
   margin: 0;
@@ -119,11 +120,8 @@ const CakeListButton = styled.button`
 `;
 
 const Home = ({ addCakeToCart, cakes, history }) => {
-  const getTargetCakeList = (cakeList, targetTag) =>
-    cakeList.filter((cake) => cake.tags.includes(targetTag));
-
   const buildCakeList = () =>
-    getTargetCakeList(cakes, BEST_SELLING).map((cake) => (
+    filterByTag(cakes, BEST_SELLING).map((cake) => (
       <Col lg={4} sm={6} xs={12} key={cake.id}>
         <CakeListOutlineDiv>
           <CakeListImageAreaDiv>
@@ -176,7 +174,7 @@ const Home = ({ addCakeToCart, cakes, history }) => {
             </Button>
           </Carousel.Caption>
         </Carousel.Item>
-        {getTargetCakeList(cakes, TODAY_SPECIAL).map((cake) => (
+        {filterByTag(cakes, TODAY_SPECIAL).map((cake) => (
           <Carousel.Item key={cake.id}>
             <div style={{ backgroundColor: 'pink', height: 300 }}></div>
             <Carousel.Caption>

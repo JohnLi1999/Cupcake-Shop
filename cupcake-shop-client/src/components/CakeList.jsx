@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { isAuthenticated } from '../util/auth';
+import { filterByCategory } from '../util/cakes';
 import { addItemToTempCart } from '../util/tempCart'
 
 const StyledH1 = styled.h1`
@@ -115,11 +116,8 @@ const CakeListButton = styled.button`
 `;
 
 const CakeList = ({ addCakeToCart, cakes, history, match }) => {
-  const getTargetCakeList = (cakeList, targetCategory) =>
-    cakeList.filter((cake) => cake.category === targetCategory);
-
   const buildCakeList = () =>
-    getTargetCakeList(cakes, match.params.name).map((cake) => (
+    filterByCategory(cakes, match.params.name).map((cake) => (
       <Col lg={4} sm={6} xs={12} key={cake.id}>
         <CakeListOutlineDiv>
           <CakeListImageAreaDiv>
