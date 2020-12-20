@@ -16,11 +16,12 @@ import {
   deleteCartItem,
 } from './api/cartService';
 import { getTempCart, clearTempCart } from './util/tempCart';
+import CakeList from './containers/CakeList';
+
 import CustomNavbar from './components/CustomNavbar';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
-import CakeList from './components/CakeList';
 import CakeDetails from './components/CakeDetails';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
