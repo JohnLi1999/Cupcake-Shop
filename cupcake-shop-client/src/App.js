@@ -42,6 +42,7 @@ const FullWidthContainer = styled(Container)`
   padding: 0;
   border: 0;
   max-width: 100%;
+  background-color: #f2f2f2;
 `;
 
 const App = ({
