@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import * as serviceWorker from './serviceWorker';
-import './styles/custom.css';
 import App from './App';
 import configureStore from './store/configureStore';
 
