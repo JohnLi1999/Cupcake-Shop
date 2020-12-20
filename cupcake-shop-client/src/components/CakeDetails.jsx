@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { isAuthenticated } from '../util/utility';
+import { isAuthenticated } from '../util/auth';
 import { addItemToTempCart } from '../util/tempCart';
 
 const CakeDetailImageAreaDiv = styled.div`

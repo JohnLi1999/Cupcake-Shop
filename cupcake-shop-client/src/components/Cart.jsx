@@ -6,7 +6,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import { isAuthenticated, getSubtotalPrice } from '../util/utility';
+import { isAuthenticated } from '../util/auth';
+import { getSubtotalPrice } from '../util/utility';
 import {
   getTempCart,
   addItemToTempCart,

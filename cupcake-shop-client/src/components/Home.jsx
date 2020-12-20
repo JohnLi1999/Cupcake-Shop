@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import { TODAY_SPECIAL, BEST_SELLING } from '../constants/constants';
 import { addItemToTempCart } from '../util/tempCart';
-import { isAuthenticated } from '../util/utility';
+import { isAuthenticated } from '../util/auth';
 
 const FullWidthContainer = styled(Container)`
   margin: 0;

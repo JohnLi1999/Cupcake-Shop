@@ -10,8 +10,8 @@ import brandingImage from '../assets/branding.png';
 import {
   isAuthenticated,
   isAdmin,
-  getSubtotalAmount,
-} from '../util/utility';
+} from '../util/auth';
+import {getSubtotalAmount} from '../util/utility';
 import { getTempCart } from '../util/tempCart';
 
 const StyledNavbar = styled(Navbar)`

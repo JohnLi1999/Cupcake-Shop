@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import NotFound from './NotFound';
-import { isAuthenticated, isAdmin } from '../util/utility';
+import { isAuthenticated, isAdmin } from '../util/auth';
 
 const AdminRoute = ({ ...props }) => {
   /* If logged in but not an admin, we will show an error page. 
