@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Carousel, Alert, Button } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
+import { TODAY_SPECIAL, BEST_SELLING } from '../constants/constants';
+import { addItemToTempCart } from '../shared/tempCart';
 import { isAuthenticated } from '../shared/utility';
-import { addItemToTempCart } from '../shared/tempCart'
 
-const StyledH1 = styled.h1`
-  margin: 25px 0 10px 0;
+const FullWidthContainer = styled(Container)`
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: 100%;
 `;
 
 const CakeListOutlineDiv = styled.div`
@@ -114,20 +118,18 @@ const CakeListButton = styled.button`
   }
 `;
 
-const CakeList = ({ addCakeToCart, cakes, history, match }) => {
-  const getTargetCakeList = (cakeList, targetCategory) =>
-    cakeList.filter((cake) => cake.category === targetCategory);
+const Home = ({ addCakeToCart, cakes, history }) => {
+  const getTargetCakeList = (cakeList, targetTag) =>
+    cakeList.filter((cake) => cake.tags.includes(targetTag));
 
   const buildCakeList = () =>
-    getTargetCakeList(cakes, match.params.name).map((cake) => (
+    getTargetCakeList(cakes, BEST_SELLING).map((cake) => (
       <Col lg={4} sm={6} xs={12} key={cake.id}>
         <CakeListOutlineDiv>
           <CakeListImageAreaDiv>
-            <SeeDetailsDiv>
-              See Details
-            </SeeDetailsDiv>
+            <SeeDetailsDiv>See Details</SeeDetailsDiv>
             <Link to={`/cakes/${cake.name}`}>
-              <CakeListImg 
+              <CakeListImg
                 src={cake.cover}
                 alt={cake.name} />
             </Link>
@@ -144,14 +146,11 @@ const CakeList = ({ addCakeToCart, cakes, history, match }) => {
               <CakeListButton
                 onClick={() => {
                   if (isAuthenticated()) {
-                    return addCakeToCart(
-                      cake.id,
-                      `/category/${cake.category}`
-                    );
+                    return addCakeToCart(cake.id, '/');
                   }
                   addItemToTempCart(cake.id);
                   toast.success('Cake added!');
-                  return history.push(`/category/${cake.category}`);
+                  return history.push('/');
                 }}>
                 Add to Cart
               </CakeListButton>
@@ -162,10 +161,47 @@ const CakeList = ({ addCakeToCart, cakes, history, match }) => {
     ));
 
   return (
-    <Container>
-      <StyledH1>{match.params.name.toUpperCase()}</StyledH1>
-      <Row>{buildCakeList()}</Row>
-    </Container>
+    <FullWidthContainer>
+      <Carousel>
+        <Carousel.Item>
+          <div style={{ backgroundColor: 'pink', height: 300 }}></div>
+          <Carousel.Caption>
+            <h2>Welcome to the Cupcake Shop</h2>
+            <h3>Hope you find your favorite cake here</h3>
+            <Button
+              variant='warning'
+              className='mt-2 mb-3'
+              onClick={() => history.push('/cart')}>
+              Check your cart
+            </Button>
+          </Carousel.Caption>
+        </Carousel.Item>
+        {getTargetCakeList(cakes, TODAY_SPECIAL).map((cake) => (
+          <Carousel.Item key={cake.id}>
+            <div style={{ backgroundColor: 'pink', height: 300 }}></div>
+            <Carousel.Caption>
+              <Container>
+                <h3>Today's Special</h3>
+                <h2>{cake.name}</h2>
+                <div>{cake.description}</div>
+              </Container>
+              <Button
+                variant='warning'
+                className='mt-2 mb-4'
+                onClick={() => history.push(`/cakes/${cake.name}`)}>
+                See Details
+              </Button>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+      <Container>
+        <Alert variant='primary' className='mt-5'>
+          Best Selling
+        </Alert>
+        <Row>{buildCakeList()}</Row>
+      </Container>
+    </FullWidthContainer>
   );
 };
 
@@ -177,4 +213,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(CakeList));
+export default connect(mapStateToProps)(withRouter(Home));

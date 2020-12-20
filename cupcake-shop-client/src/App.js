@@ -19,7 +19,7 @@ import { getTempCart, clearTempCart } from './shared/tempCart';
 import CustomNavbar from './components/CustomNavbar/CustomNavbar';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
-import Home from './components/Home/Home';
+import Home from './components/Home';
 import CakeList from './components/CakeList';
 import CakeDetails from './components/CakeDetails';
 import Cart from './components/Cart';
