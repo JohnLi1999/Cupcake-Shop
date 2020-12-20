@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import { isAuthenticated } from '../util/auth';
-import { getSubtotalPrice } from '../util/utility';
+import { getSubtotalPrice } from '../util/cart';
 import {
   getTempCart,
   addItemToTempCart,

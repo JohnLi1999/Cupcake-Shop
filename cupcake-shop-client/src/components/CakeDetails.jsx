@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { isAuthenticated } from '../util/auth';
+import { filterByName } from '../util/cakes'
 import { addItemToTempCart } from '../util/tempCart';
 
 const CakeDetailImageAreaDiv = styled.div`
@@ -83,11 +84,8 @@ const CakeDetails = ({ addCakeToCart, cakes, history, match }) => {
   const [showImg1, setShowImg1] = useState(false);
   const [showImg2, setShowImg2] = useState(false);
 
-  const getTargetCake = (cakeList, name) =>
-    cakeList.filter((cake) => cake.name === name);
-
   const buildCakeDetail = () =>
-    getTargetCake(cakes, match.params.name).map((cake) => (
+    filterByName(cakes, match.params.name).map((cake) => (
       <Row key={cake.id}>
         <Col sm={7} lg={5}>
           <Row className='p-1'>

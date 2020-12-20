@@ -11,7 +11,7 @@ import {
   isAuthenticated,
   isAdmin,
 } from '../util/auth';
-import {getSubtotalAmount} from '../util/utility';
+import {getSubtotalAmount} from '../util/cart';
 import { getTempCart } from '../util/tempCart';
 
 const StyledNavbar = styled(Navbar)`
