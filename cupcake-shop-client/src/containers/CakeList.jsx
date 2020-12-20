@@ -14,7 +14,7 @@ const StyledH1 = styled.h1`
   margin: 25px 0 10px 0;
 `;
 
-const CakeList = ({ addCakeToCart, cakes, history, match }) => {
+const CakeList = ({ cakes, history, match, addCakeToCart }) => {
   const clickHandler = (cake) => {
     if (isAuthenticated()) {
       return addCakeToCart(
