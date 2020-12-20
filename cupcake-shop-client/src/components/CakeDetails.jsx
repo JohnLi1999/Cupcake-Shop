@@ -8,12 +8,12 @@ import { toast } from 'react-toastify';
 import { isAuthenticated } from '../shared/utility';
 import { addItemToTempCart } from '../shared/tempCart';
 
-const CakeDetailImageArea = styled.div`
+const CakeDetailImageAreaDiv = styled.div`
   width: 100%;
   margin-top: 30px;
 `
 
-const CakeDetailSlide = styled.img`
+const CakeDetailSlideImg = styled.img`
   width: 100%;
   height: 100%;
   border: 1px solid #d9d9d9;
@@ -21,7 +21,7 @@ const CakeDetailSlide = styled.img`
   display: ${props => props.show ? 'block' : 'none'}
 `
 
-const CakeDetailImage = styled.img`
+const CakeDetailImg = styled.img`
   width: 100%;
   height: 100%;
   margin: 5px auto;
@@ -35,7 +35,7 @@ const CakeDetailImage = styled.img`
   }
 `
 
-const CakeDetailName = styled.div`
+const CakeDetailNameDiv = styled.div`
   margin-top: 60px;
   margin-bottom: 10px;
   color: #ff9900;
@@ -43,20 +43,20 @@ const CakeDetailName = styled.div`
   font-weight: 500;
 `;  
 
-const CakeDetailCategory = styled.div`
+const CakeDetailCategoryDiv = styled.div`
   margin-bottom: 20px;
   font-size: 30px;
   font-weight: 700;
   color: #993333;
 `;
 
-const CakeDetailDescription = styled.div`  
+const CakeDetailDescriptionDiv = styled.div`  
   margin-bottom: 20px;
   font-size: 25px;
   color: #8c8c8c;`
 ;
 
-const CakeDetailPrice = styled.div`
+const CakeDetailPriceDiv = styled.div`
   margin-bottom: 30px;
   font-size: 30px;
   font-weight: 700;
@@ -91,24 +91,24 @@ const CakeDetails = ({ addCakeToCart, cakes, history, match }) => {
       <Row key={cake.id}>
         <Col sm={7} lg={5}>
           <Row className='p-1'>
-            <CakeDetailImageArea>
-              <CakeDetailSlide                 
+            <CakeDetailImageAreaDiv>
+              <CakeDetailSlideImg                
                 src={cake.cover}
                 alt=''
                 show={showCover} />
-              <CakeDetailSlide                 
+              <CakeDetailSlideImg                 
                 src={cake.img1}
                 alt=''
                 show={showImg1} />
-              <CakeDetailSlide                 
+              <CakeDetailSlideImg                
                 src={cake.img2}
                 alt=''
                 show={showImg2} />
-            </CakeDetailImageArea>
+            </CakeDetailImageAreaDiv>
           </Row>
           <Row>
             <Col className='p-1'>
-              <CakeDetailImage                 
+              <CakeDetailImg                 
                 src={cake.cover}
                 alt='COVER'
                 onClick={() => {
@@ -116,11 +116,10 @@ const CakeDetails = ({ addCakeToCart, cakes, history, match }) => {
                   setShowImg1(false);
                   setShowImg2(false);
                 }} 
-                show={showCover}
-              />
+                show={showCover} />
             </Col>
             <Col className='p-1'>
-              <CakeDetailImage                 
+              <CakeDetailImg                
                 src={cake.img1}
                 alt='IMAGE1'
                 onClick={() => {
@@ -128,11 +127,10 @@ const CakeDetails = ({ addCakeToCart, cakes, history, match }) => {
                   setShowImg1(true);
                   setShowImg2(false);
                 }} 
-                show={showImg1}
-              />   
+                show={showImg1} />   
             </Col>
             <Col className='p-1'>
-              <CakeDetailImage                 
+              <CakeDetailImg                 
               src={cake.img2}
                 alt='IMAGE2'
                 onClick={() => {
@@ -140,22 +138,21 @@ const CakeDetails = ({ addCakeToCart, cakes, history, match }) => {
                   setShowImg1(false);
                   setShowImg2(true);
                 }} 
-                show={showImg2}
-              />
+                show={showImg2} />
             </Col>
           </Row>
         </Col>
         <Col sm={5} lg={7} className='text-center'>
-          <CakeDetailName>{cake.name}</CakeDetailName>
-          <CakeDetailCategory>
+          <CakeDetailNameDiv>{cake.name}</CakeDetailNameDiv>
+          <CakeDetailCategoryDiv>
             Category: {cake.category}
-          </CakeDetailCategory>
-          <CakeDetailDescription>
+          </CakeDetailCategoryDiv>
+          <CakeDetailDescriptionDiv>
             {cake.description}
-          </CakeDetailDescription>
-          <CakeDetailPrice>
+          </CakeDetailDescriptionDiv>
+          <CakeDetailPriceDiv>
             $ {cake.price}
-          </CakeDetailPrice>
+          </CakeDetailPriceDiv>
           <CakeDetailButton onClick={() => {
               if (isAuthenticated()) {
                 return addCakeToCart(cake.id, `/cakes/${match.params.name}`);

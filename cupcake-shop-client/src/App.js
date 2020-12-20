@@ -20,7 +20,7 @@ import CustomNavbar from './components/CustomNavbar/CustomNavbar';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import Home from './components/Home/Home';
-import CakeList from './components/CakeList/CakeList';
+import CakeList from './components/CakeList';
 import CakeDetails from './components/CakeDetails';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
@@ -100,7 +100,7 @@ const App = ({
     loadCart();
   }, [loadCategories, loadCakes, loadUser, loadCart]);
 
-  const handleLogIn = (path) => {
+  const handleLogIn = path => {
     loadUser();
     if (path) {
       history.push(path);
@@ -137,7 +137,7 @@ const App = ({
     }
   };
 
-  const reduceCakeInCart = async (cakeId) => {
+  const reduceCakeInCart = async cakeId => {
     try {
       const response = await reduceCartItem(userId, cakeId);
       cartReduceItem(cakeId);
@@ -150,7 +150,7 @@ const App = ({
     }
   };
 
-  const deleteCakeFromCart = async (cakeId) => {
+  const deleteCakeFromCart = async cakeId => {
     try {
       const response = await deleteCartItem(userId, cakeId);
       cartDeleteItem(cakeId);
@@ -168,28 +168,28 @@ const App = ({
       <CustomNavbar onLogOut={handleLogOut} />
       <Switch>
         <Route
-          path='/'
+          path="/"
           exact
           render={() => <Home addCakeToCart={addCakeToCart} />}
         />
         <Route
-          path='/login'
+          path="/login"
           exact
           render={() => <LogIn onLogIn={handleLogIn} />}
         />
-        <Route path='/signup' exact component={SignUp} />
+        <Route path="/signup" exact component={SignUp} />
         <Route
-          path='/category/:name'
+          path="/category/:name"
           exact
           render={() => <CakeList addCakeToCart={addCakeToCart} />}
         />
         <Route
-          path='/cakes/:name'
+          path="/cakes/:name"
           exact
           render={() => <CakeDetails addCakeToCart={addCakeToCart} />}
         />
         <Route
-          path='/cart'
+          path="/cart"
           exact
           render={() => (
             <Cart
@@ -200,42 +200,42 @@ const App = ({
           )}
         />
         <Route
-          path='/checkout'
+          path="/checkout"
           exact
           render={() => <Checkout onCheckout={handleCheckout} />}
         />
-        <Route path='/orders' exact render={() => <OrderList />} />
-        <AuthenticatedRoute path='/profile' exact component={Profile} />
-        <AdminRoute path='/admin/users' exact component={AdminUsers} />
-        <AdminRoute path='/admin/users/add' exact component={AdminUsersAdd} />
+        <Route path="/orders" exact render={() => <OrderList />} />
+        <AuthenticatedRoute path="/profile" exact component={Profile} />
+        <AdminRoute path="/admin/users" exact component={AdminUsers} />
+        <AdminRoute path="/admin/users/add" exact component={AdminUsersAdd} />
         <AdminRoute
-          path='/admin/users/update/:id'
+          path="/admin/users/update/:id"
           exact
           component={AdminUsersUpdate}
         />
         <AdminRoute
-          path='/admin/categories'
+          path="/admin/categories"
           exact
           render={() => <AdminCategories loadCategories={loadCategories} />}
         />
         <AdminRoute
-          path='/admin/cakes'
+          path="/admin/cakes"
           exact
           render={() => <AdminCakes loadCakes={loadCakes} />}
         />
         <AdminRoute
-          path='/admin/cakes/:operation/:id?'
+          path="/admin/cakes/:operation/:id?"
           exact
           render={() => <AdminCakesOperations loadCakes={loadCakes} />}
         />
-        <AdminRoute path='/admin/orders' exact component={AdminOrders} />
+        <AdminRoute path="/admin/orders" exact component={AdminOrders} />
         <Route component={NotFound} />
       </Switch>
     </FullWidthContainer>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { id } = state.user;
 
   return {
@@ -243,19 +243,18 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    loadAllCategories: (categories) =>
+    loadAllCategories: categories =>
       dispatch(actions.categoryLoadingAll(categories)),
-    loadAllCakes: (cakes) => dispatch(actions.cakeLoadingAll(cakes)),
-    loadCurrentUser: (currentUser) =>
-      dispatch(actions.userLoading(currentUser)),
-    loadAllCartItems: (cart) => dispatch(actions.cartLoadingAll(cart)),
+    loadAllCakes: cakes => dispatch(actions.cakeLoadingAll(cakes)),
+    loadCurrentUser: currentUser => dispatch(actions.userLoading(currentUser)),
+    loadAllCartItems: cart => dispatch(actions.cartLoadingAll(cart)),
     clearCart: () => dispatch(actions.cartClear()),
-    cartAddItem: (cakeId) => dispatch(actions.cartAddItem(cakeId)),
-    cartReduceItem: (cakeId) => dispatch(actions.cartReduceItem(cakeId)),
-    cartDeleteItem: (cakeId) => dispatch(actions.cartDeleteItem(cakeId)),
-    logOut: (currentUser) => dispatch(actions.userLogOut(currentUser)),
+    cartAddItem: cakeId => dispatch(actions.cartAddItem(cakeId)),
+    cartReduceItem: cakeId => dispatch(actions.cartReduceItem(cakeId)),
+    cartDeleteItem: cakeId => dispatch(actions.cartDeleteItem(cakeId)),
+    logOut: currentUser => dispatch(actions.userLogOut(currentUser)),
   };
 };
 
