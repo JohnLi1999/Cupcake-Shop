@@ -21,7 +21,7 @@ import {
   BEST_SELLING,
   MAX_FILE_SIZE_IN_MB,
 } from '../../../constants/constants';
-import { bytesToMB, updateObject } from '../../../shared/utility';
+import { bytesToMB, updateObject } from '../../../util/utility';
 
 const StyledH1 = styled.h1`
   text-align: center;

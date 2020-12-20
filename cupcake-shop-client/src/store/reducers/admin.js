@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import { updateObject } from '../../shared/utility';
+import { updateObject } from '../../util/utility';
 
 const initialState = {
   users: [],
@@ -13,7 +13,7 @@ const userLoadingAll = (state, action) => {
 
 const userDelete = (state, action) => {
   const { id } = action;
-  const updatedUsers = state.users.filter((user) => user.id !== id);
+  const updatedUsers = state.users.filter(user => user.id !== id);
   return updateObject(state, { users: updatedUsers });
 };
 
@@ -24,7 +24,7 @@ const orderLoadingAll = (state, action) => {
 
 const orderStatusUpdate = (state, action) => {
   const { orderId, newStatus } = action;
-  const orderToUpdate = state.orders.find((order) => order.id === orderId);
+  const orderToUpdate = state.orders.find(order => order.id === orderId);
   orderToUpdate.orderStatus = newStatus;
   return state;
 };

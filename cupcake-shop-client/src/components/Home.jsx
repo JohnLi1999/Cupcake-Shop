@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { TODAY_SPECIAL, BEST_SELLING } from '../constants/constants';
-import { addItemToTempCart } from '../shared/tempCart';
-import { isAuthenticated } from '../shared/utility';
+import { addItemToTempCart } from '../util/tempCart';
+import { isAuthenticated } from '../util/utility';
 
 const FullWidthContainer = styled(Container)`
   margin: 0;

@@ -5,8 +5,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { isAuthenticated } from '../shared/utility';
-import { addItemToTempCart } from '../shared/tempCart'
+import { isAuthenticated } from '../util/utility';
+import { addItemToTempCart } from '../util/tempCart'
 
 const StyledH1 = styled.h1`
   margin: 25px 0 10px 0;

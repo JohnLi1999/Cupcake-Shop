@@ -15,7 +15,7 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { addOrder } from '../api/orderService';
-import { getSubtotalAmount, getSubtotalPrice } from '../shared/utility';
+import { getSubtotalAmount, getSubtotalPrice } from '../util/utility';
 import { MASTER, VISA, WECHAT, ALIPAY } from '../constants/constants';
 
 const StyledH1 = styled.h1`

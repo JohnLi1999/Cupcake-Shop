@@ -11,8 +11,8 @@ import {
   isAuthenticated,
   isAdmin,
   getSubtotalAmount,
-} from '../shared/utility';
-import { getTempCart } from '../shared/tempCart';
+} from '../util/utility';
+import { getTempCart } from '../util/tempCart';
 
 const StyledNavbar = styled(Navbar)`
   background-color: #e6b3b3;

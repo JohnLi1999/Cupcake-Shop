@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import { updateObject } from '../../shared/utility';
+import { updateObject } from '../../util/utility';
 import {
   AUTHENTICATION_TOKEN,
   IS_AUTHENTICATED,

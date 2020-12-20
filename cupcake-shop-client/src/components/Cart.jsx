@@ -6,13 +6,13 @@ import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import { isAuthenticated, getSubtotalPrice } from '../shared/utility';
+import { isAuthenticated, getSubtotalPrice } from '../util/utility';
 import {
   getTempCart,
   addItemToTempCart,
   reduceItemInTempCart,
   deleteItemFromTempCart,
-} from '../shared/tempCart';
+} from '../util/tempCart';
 
 const StyledH1 = styled.h1`
   margin: 25px 0 40px 10px;
