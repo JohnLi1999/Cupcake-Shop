@@ -65,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         };
 
         String[] permittedEndpoints = new String[] {
+                "/api/health/**",
                 "/api/auth/**",
                 "/api/categories/all",
                 "/api/cakes/all"
