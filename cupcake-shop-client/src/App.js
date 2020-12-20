@@ -21,7 +21,7 @@ import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import Home from './components/Home/Home';
 import CakeList from './components/CakeList/CakeList';
-import CakeDetails from './components/CakeDetails/CakeDetails.jsx';
+import CakeDetails from './components/CakeDetails';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import OrderList from './components/OrderList';
