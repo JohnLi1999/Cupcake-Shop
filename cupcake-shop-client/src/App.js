@@ -16,7 +16,7 @@ import {
   deleteCartItem,
 } from './api/cartService';
 import { getTempCart, clearTempCart } from './shared/tempCart';
-import CustomNavbar from './components/CustomNavbar/CustomNavbar';
+import CustomNavbar from './components/CustomNavbar';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
