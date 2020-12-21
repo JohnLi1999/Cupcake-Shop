@@ -1,20 +1,14 @@
 import React, { useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import { Container, Table, Button, Tabs, Tab } from 'react-bootstrap';
+import { Table, Button, Tabs, Tab } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import FullWidthContainer from '../../common/UI/FullWidthContainer';
 import { getAllOrders, updateOrderStatus } from '../../api/orderService';
 import { PLACED, DELIVERED, FINISHED } from '../../constants/constants';
 import * as actions from '../../store/actions/index';
-
-const FullWidthContainer = styled(Container)`
-  margin: 0 10px 0 0;
-  padding: 10px;
-  border: 0;
-  max-width: 100%;
-`;
 
 const StyledOrderStatus = styled.div`
   color: ${props => props.color};
@@ -137,7 +131,7 @@ const AdminOrders = ({
   );
 
   return (
-    <FullWidthContainer>
+    <FullWidthContainer needMargin>
       <Tabs defaultActiveKey="all">
         <Tab eventKey="all" title="All ORDERS">
           {buildOrderList()}

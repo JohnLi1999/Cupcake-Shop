@@ -1,23 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Container, Row, Alert } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
+import FullWidthContainer from '../../common/UI/FullWidthContainer';
 import Cake from '../../components/customer/Cake/Cake';
 import CustomCarousel from '../../components/customer/Cake/CustomCarousel';
 import { BEST_SELLING } from '../../constants/constants';
 import { isAuthenticated } from '../../util/auth';
 import { filterByTag } from '../../util/cakes';
 import { addItemToTempCart } from '../../util/tempCart';
-
-const FullWidthContainer = styled(Container)`
-  margin: 0;
-  padding: 0;
-  border: 0;
-  max-width: 100%;
-`;
 
 const Home = ({ cakes, history, addCakeToCart }) => {
   const checkCartHandler = () => history.push('/cart');

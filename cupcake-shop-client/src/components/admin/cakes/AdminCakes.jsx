@@ -1,17 +1,10 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { Container, Table, Button, Row, Tabs, Tab } from 'react-bootstrap';
+import { Table, Button, Row, Tabs, Tab } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import FullWidthContainer from '../../../common/UI/FullWidthContainer';
 import { TODAY_SPECIAL, BEST_SELLING } from '../../../constants/constants';
-
-const FullWidthContainer = styled(Container)`
-  margin: 0 10px 0 0;
-  padding: 10px;
-  border: 0;
-  max-width: 100%;
-`;
 
 const AdminCakes = ({ loadCakes, cakes, history }) => {
   useEffect(() => {
@@ -88,7 +81,7 @@ const AdminCakes = ({ loadCakes, cakes, history }) => {
   );
 
   return (
-    <FullWidthContainer>
+    <FullWidthContainer needMargin>
       <Row className="justify-content-end">
         <Button
           className="mt-2 mr-4"

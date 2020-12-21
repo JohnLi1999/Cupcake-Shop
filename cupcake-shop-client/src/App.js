@@ -1,7 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import styled from 'styled-components';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -18,6 +16,7 @@ import {
 import AuthenticatedRoute from './common/AuthenticatedRoute';
 import AdminRoute from './common/AdminRoute';
 import NotFound from './common/NotFound';
+import FullWidthContainer from './common/UI/FullWidthContainer';
 import CakeList from './containers/customer/CakeList';
 import Home from './containers/customer/Home';
 import CakeDetails from './containers/customer/CakeDetails';
@@ -29,23 +28,15 @@ import SignUp from './containers/customer/SignUp';
 import Checkout from './containers/customer/Checkout';
 import Profile from './containers/customer/Profile';
 import AdminCategories from './containers/admin/AdminCategories';
+import AdminOrders from './containers/admin/AdminOrders';
 
 import AdminUsers from './components/admin/users/AdminUsers';
 import AdminUsersAdd from './components/admin/users/AdminUsersAdd';
 import AdminUsersUpdate from './components/admin/users/AdminUsersUpdate';
-
 import AdminCakes from './components/admin/cakes/AdminCakes';
 import AdminCakesOperations from './components/admin/cakes/AdminCakesOperations';
-import AdminOrders from './components/admin/AdminOrders';
-import { getTempCart, clearTempCart } from './util/tempCart';
 
-const FullWidthContainer = styled(Container)`
-  margin: 0;
-  padding: 0;
-  border: 0;
-  max-width: 100%;
-  background-color: #f2f2f2;
-`;
+import { getTempCart, clearTempCart } from './util/tempCart';
 
 const App = ({
   userId,
