@@ -1,17 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
-import styled from 'styled-components';
 import { Container, Accordion } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import Empty from '../common/UI/Empty';
+import Title from '../common/UI/Title';
 import Order from '../components/Order/Order';
 import { getOrders } from '../api/orderService';
 import * as actions from '../store/actions/index';
-
-const StyledH1 = styled.h1`
-  text-align: center;
-  margin: 25px;
-`;
 
 const OrderList = ({ userId, orders, loadOrderList }) => {
   const loadOrders = useCallback(async () => {
@@ -31,7 +26,7 @@ const OrderList = ({ userId, orders, loadOrderList }) => {
         <Empty>Your do not have any Order yet</Empty>
       ) : (
         <>
-          <StyledH1>Order List</StyledH1>
+          <Title center>Order List</Title>
           <Accordion>
             {orders.map(order => (
               <Order key={order.id} order={order} />
