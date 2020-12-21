@@ -15,7 +15,7 @@ const StyledH1 = styled.h1`
 `;
 
 const CakeList = ({ cakes, history, match, addCakeToCart }) => {
-  const clickHandler = (cake) => {
+  const addToCartHandler = (cake) => {
     if (isAuthenticated()) {
       return addCakeToCart(
         cake.id,
@@ -32,7 +32,7 @@ const CakeList = ({ cakes, history, match, addCakeToCart }) => {
       <StyledH1>{match.params.name.toUpperCase()}</StyledH1>
       <Row>{
         filterByCategory(cakes, match.params.name).map(cake => (
-          <Cake cake={cake} history={history} onClick={() => clickHandler(cake)} />
+          <Cake key={cake.id} cake={cake} history={history} addToCart={addToCartHandler} />
         ))
       }</Row>
     </Container>

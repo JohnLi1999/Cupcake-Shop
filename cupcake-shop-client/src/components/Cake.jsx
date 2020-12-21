@@ -105,7 +105,7 @@ const CakeListButton = styled.button`
   }
 `;
  
-const Cake = ({ cake, onClick }) => 
+const Cake = ({ cake, addToCart }) => 
   <Col lg={4} sm={6} xs={12} key={cake.id}>
     <CakeListOutlineDiv>
       <CakeListImageAreaDiv>
@@ -128,7 +128,7 @@ const Cake = ({ cake, onClick }) =>
         </CakePriceDiv>
         <TextRightDiv>
           <CakeListButton
-            onClick={onClick}>
+            onClick={() => addToCart(cake)}>
             Add to Cart
           </CakeListButton>
         </TextRightDiv>
