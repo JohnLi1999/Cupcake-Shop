@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import DividingLine from '../common/UI/DividingLine';
 import Empty from '../common/UI/Empty';
 import Title from '../common/UI/Title';
-import CartItem from '../components/CartItem';
+import CartItem from '../components/Cart/CartItem';
 import { isAuthenticated } from '../util/auth';
 import { getSubtotalPrice } from '../util/cart';
 import {
