@@ -42,7 +42,7 @@ const CakeDetails = ({ cakes, history, match, addCakeToCart }) => {
     return history.push(`/cakes/${match.params.name}`);
   }
 
-  const buildCakeDetail = () =>
+  return <Container>{
     filterByName(cakes, match.params.name).map((cake) => (
       <Row key={cake.id}>
         <CakeDetailsImages
@@ -59,9 +59,8 @@ const CakeDetails = ({ cakes, history, match, addCakeToCart }) => {
           match={match}
           addToCart={addToCartHandler}/>
       </Row>
-    ));
-
-  return <Container>{buildCakeDetail()}</Container>;
+    ))
+  }</Container>;
 };
 
 const mapStateToProps = (state) => {

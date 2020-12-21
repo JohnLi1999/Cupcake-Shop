@@ -23,8 +23,8 @@ import Home from './containers/Home';
 import CakeDetails from './containers/CakeDetails';
 import Cart from './containers/Cart';
 import OrderList from './containers/OrderList';
+import CustomNavbar from './containers/CustomNavbar';
 
-import CustomNavbar from './components/CustomNavbar';
 import LogIn from './components/LogIn';
 import Checkout from './components/Checkout';
 import Profile from './components/Profile';

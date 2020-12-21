@@ -60,6 +60,7 @@ const CustomNavbar = ({ categories, cart, onLogOut, history }) => {
             </NavDropdown>	
           )}	
         </Nav>	
+        
         <Nav className='ml-auto'>	
           <Nav.Item>	
             <Link to='/cart' className='nav-link'>	
