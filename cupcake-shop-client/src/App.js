@@ -23,7 +23,7 @@ import Home from './containers/Home';
 import CakeDetails from './containers/CakeDetails';
 import Cart from './containers/Cart';
 import OrderList from './containers/OrderList';
-import CustomNavbar from './containers/CustomNavbar';
+import Navbar from './containers/Navbar';
 
 import LogIn from './components/LogIn';
 import Checkout from './components/Checkout';
@@ -166,7 +166,7 @@ const App = ({
 
   return (
     <FullWidthContainer>
-      <CustomNavbar onLogOut={handleLogOut} />
+      <Navbar onLogOut={handleLogOut} />
       <Switch>
         <Route
           path="/"

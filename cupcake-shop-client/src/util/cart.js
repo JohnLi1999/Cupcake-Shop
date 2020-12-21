@@ -11,4 +11,6 @@ export const getSubtotalPrice = (cart, cakes) => {
 };
 
 export const getSubtotalAmount = cart =>
-  cart.reduce((amount, cartItem) => (amount += cartItem.amount), 0);
+  !!cart
+    ? cart.reduce((amount, cartItem) => (amount += cartItem.amount), 0)
+    : 0;
