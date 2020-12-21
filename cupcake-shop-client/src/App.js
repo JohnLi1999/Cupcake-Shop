@@ -27,8 +27,8 @@ import Navbar from './containers/Navbar';
 import LogIn from './containers/LogIn';
 import SignUp from './containers/SignUp';
 import Checkout from './containers/Checkout';
+import Profile from './containers/Profile';
 
-import Profile from './components/Profile';
 import AdminUsers from './components/admin/users/AdminUsers';
 import AdminUsersAdd from './components/admin/users/AdminUsersAdd';
 import AdminUsersUpdate from './components/admin/users/AdminUsersUpdate';

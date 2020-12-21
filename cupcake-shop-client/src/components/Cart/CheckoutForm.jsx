@@ -1,55 +1,45 @@
 import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
 import { FormGroup, Button, Col, Row } from 'react-bootstrap';
-import styled from 'styled-components';
 
+import ErrorFeedback from '../../common/UI/ErrorFeedback';
+import FormLabel from '../../common/UI/FormLabel';
 import { MASTER, VISA, WECHAT, ALIPAY } from '../../constants/constants';
-
-const StyledLabel = styled.label`
-  font-size: 18px;
-  font-weight: 500;
-  margin: 10px 2px;
-`;
-
-const StyledErrorFeedback = styled.div`
-  color: #ff0000;
-  margin: 0 5px;
-`;
 
 const CheckoutForm = ({ totalPrice, totalAmount }) => (
   <Form>
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-      <StyledLabel>Receiver</StyledLabel>
+      <FormLabel>Receiver</FormLabel>
       <Field
         className="form-control"
         type="text"
         name="receiver"
         placeholder="Please enter the receiver name"
       />
-      <StyledErrorFeedback>
+      <ErrorFeedback>
         <ErrorMessage name="receiver" />
-      </StyledErrorFeedback>
+      </ErrorFeedback>
     </FormGroup>
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-      <StyledLabel>Address</StyledLabel>
+      <FormLabel>Address</FormLabel>
       <Field
         className="form-control"
         type="text"
         name="address"
         placeholder="Please enter the address"
       />
-      <StyledErrorFeedback>
+      <ErrorFeedback>
         <ErrorMessage name="address" />
-      </StyledErrorFeedback>
+      </ErrorFeedback>
     </FormGroup>
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-      <StyledLabel>Total Price: {totalPrice}</StyledLabel>
+      <FormLabel>Total Price: {totalPrice}</FormLabel>
     </FormGroup>
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-      <StyledLabel>Total Amount: {totalAmount}</StyledLabel>
+      <FormLabel>Total Amount: {totalAmount}</FormLabel>
     </FormGroup>
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-      <StyledLabel>Pay Type</StyledLabel>
+      <FormLabel>Pay Type</FormLabel>
       <Field as="select" name="payType" className="form-control">
         <option value="default">--- Select your Payment Type ---</option>
         <option value={MASTER}>MASTER</option>
@@ -57,9 +47,9 @@ const CheckoutForm = ({ totalPrice, totalAmount }) => (
         <option value={WECHAT}>WECHAT</option>
         <option value={ALIPAY}>ALIPAY</option>
       </Field>
-      <StyledErrorFeedback>
+      <ErrorFeedback>
         <ErrorMessage name="payType" />
-      </StyledErrorFeedback>
+      </ErrorFeedback>
     </FormGroup>
     <Row className="justify-content-center">
       <Button className="m-3" size="lg" type="submit">

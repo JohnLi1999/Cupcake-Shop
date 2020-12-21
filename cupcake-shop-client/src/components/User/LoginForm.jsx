@@ -1,45 +1,36 @@
 import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
 import { FormGroup, Button, Col, Row } from 'react-bootstrap';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const StyledLabel = styled.label`
-  font-size: 18px;
-  font-weight: 500;
-  margin: 10px 2px;
-`;
-
-const StyledErrorFeedback = styled.div`
-  color: #ff0000;
-  margin: 0 5px;
-`;
+import ErrorFeedback from '../../common/UI/ErrorFeedback';
+import FormLabel from '../../common/UI/FormLabel';
 
 const LogInForm = () => (
   <Form>
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-      <StyledLabel>Username or Email</StyledLabel>
+      <FormLabel>Username or Email</FormLabel>
       <Field
         className="form-control"
         type="text"
         name="usernameOrEmail"
         placeholder="Please enter your username or email"
       />
-      <StyledErrorFeedback>
+      <ErrorFeedback>
         <ErrorMessage name="usernameOrEmail" />
-      </StyledErrorFeedback>
+      </ErrorFeedback>
     </FormGroup>
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-      <StyledLabel>Password</StyledLabel>
+      <FormLabel>Password</FormLabel>
       <Field
         className="form-control"
         type="password"
         name="password"
         placeholder="Please enter your password"
       />
-      <StyledErrorFeedback>
+      <ErrorFeedback>
         <ErrorMessage name="password" />
-      </StyledErrorFeedback>
+      </ErrorFeedback>
     </FormGroup>
     <Row className="justify-content-center">
       <Button className="m-3" size="lg" type="submit">

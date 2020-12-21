@@ -32,6 +32,9 @@ const Checkout = ({ onCheckout, id, username, address, cart, cakes }) => {
     }
   };
 
+  const totalPrice = getSubtotalPrice(cart, cakes);
+  const totalAmount = getSubtotalAmount(cart);
+
   return (
     <>
       <Container>
@@ -45,8 +48,8 @@ const Checkout = ({ onCheckout, id, username, address, cart, cakes }) => {
           initialValues={{
             receiver: username,
             address: address,
-            totalPrice: getSubtotalPrice(cart, cakes),
-            totalAmount: getSubtotalAmount(cart),
+            totalPrice: totalPrice,
+            totalAmount: totalAmount,
             payType: '',
             cart: cart,
           }}
@@ -70,10 +73,7 @@ const Checkout = ({ onCheckout, id, username, address, cart, cakes }) => {
           onSubmit={handleSubmit}
           enableReinitialize>
           {() => (
-            <CheckoutForm
-              totalPrice={getSubtotalPrice(cart, cakes)}
-              totalAmount={getSubtotalAmount(cart)}
-            />
+            <CheckoutForm totalPrice={totalPrice} totalAmount={totalAmount} />
           )}
         </Formik>
       </Container>
