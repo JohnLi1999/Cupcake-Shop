@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container, Accordion } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import Empty from '../common/Empty';
+import Empty from '../common/UI/Empty';
 import Order from '../components/Order/Order';
 import { getOrders } from '../api/orderService';
 import * as actions from '../store/actions/index';

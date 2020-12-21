@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import LoginForm from '../components/User/LoginForm';
-import CustomSpinner from '../common/CustomSpinner';
+import CustomSpinner from '../common/UI/CustomSpinner';
+import Title from '../common/UI/Title';
+import LogInForm from '../components/User/LogInForm';
 import { login } from '../api/authService';
 import { AUTHENTICATION_TOKEN } from '../constants/constants';
-
-const StyledH1 = styled.h1`
-  text-align: center;
-  margin: 25px;
-`;
 
 const LogIn = ({ onLogIn, location }) => {
   const [isLoading, setLoading] = useState(false);
@@ -52,7 +47,7 @@ const LogIn = ({ onLogIn, location }) => {
 
   return (
     <Container>
-      <StyledH1>Log In</StyledH1>
+      <Title center>Log In</Title>
 
       {isLoading && <CustomSpinner />}
 
@@ -68,7 +63,7 @@ const LogIn = ({ onLogIn, location }) => {
           password: Yup.string().required('Password is required'),
         })}
         onSubmit={handleSubmit}>
-        {() => <LoginForm />}
+        {() => <LogInForm />}
       </Formik>
     </Container>
   );

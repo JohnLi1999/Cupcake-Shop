@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { Container, Button, Row } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import Empty from '../common/Empty';
+import DividingLine from '../common/UI/DividingLine';
+import Empty from '../common/UI/Empty';
+import Title from '../common/UI/Title';
 import CartItem from '../components/CartItem';
 import { isAuthenticated } from '../util/auth';
 import { getSubtotalPrice } from '../util/cart';
@@ -15,17 +16,6 @@ import {
   reduceItemInTempCart,
   deleteItemFromTempCart,
 } from '../util/tempCart';
-
-const StyledH1 = styled.h1`
-  margin: 25px 0 40px 10px;
-`;
-
-const StyledHr = styled.hr`
-  width: 100%;
-  border: 0;
-  height: 2px;
-  background-color: #ff80bf;
-`;
 
 const Cart = ({
   cart,
@@ -131,10 +121,10 @@ const Cart = ({
         <Empty>Your Cart is Empty</Empty>
       ) : (
         <>
-          <StyledH1>Cart</StyledH1>
+          <Title>Cart</Title>
           <Row>{displayCart()}</Row>
-          <StyledHr />
-          <StyledH1>Subtotal: $ {getSubTotalPrice(cakes)}</StyledH1>
+          <DividingLine />
+          <Title>Subtotal: $ {getSubTotalPrice(cakes)}</Title>
           <Row className="justify-content-end">
             <Button variant="info" className="mb-5" onClick={checkoutHandler}>
               Proceed to Checkout

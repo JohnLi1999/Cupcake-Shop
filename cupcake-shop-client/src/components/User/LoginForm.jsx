@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
 import { FormGroup, Button, Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const StyledLabel = styled.label`
   font-size: 18px;
@@ -54,4 +54,4 @@ const LogInForm = () => (
   </Form>
 );
 
-export default withRouter(LogInForm);
+export default LogInForm;
