@@ -17,26 +17,26 @@ const StyledCol = styled(Col)`
 `;
 
 const StyledOrderStatus = styled.div`
-  color: ${
-    (props) => {
-      if (props.status === PLACED) {
-        return '#33cc33';
-      } else if (props.status === DELIVERED) {
-        return '#0000ff';
-      } else if (props.status === FINISHED) {
-        return '#000000';
-      }
+  color: ${props => {
+    if (props.status === PLACED) {
+      return '#33cc33';
+    } else if (props.status === DELIVERED) {
+      return '#0000ff';
+    } else if (props.status === FINISHED) {
+      return '#000000';
     }
-  };
+  }};
 `;
-const Order = ({ order }) =>      
+const Order = ({ order }) => (
   <Card key={order.id}>
     <Card.Header>
       <Accordion.Toggle as={StyledDiv} eventKey={order.id}>
         <StyledCol>Ordered by: {order.createdAt}</StyledCol>
         <StyledCol>
-          Order Status 
-          <StyledOrderStatus status={order.orderStatus}>{order.orderStatus}</StyledOrderStatus>  
+          Order Status
+          <StyledOrderStatus status={order.orderStatus}>
+            {order.orderStatus}
+          </StyledOrderStatus>
         </StyledCol>
       </Accordion.Toggle>
     </Card.Header>
@@ -46,6 +46,7 @@ const Order = ({ order }) =>
         <CakesTable order={order} />
       </Card.Body>
     </Accordion.Collapse>
-  </Card>;
+  </Card>
+);
 
 export default Order;

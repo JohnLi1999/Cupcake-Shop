@@ -40,10 +40,10 @@ const AdminUsersUpdate = ({ users, history, location }) => {
     if (!users.length) {
       history.push('/admin/users');
     }
-    setUser(users.find((user) => user.id === location.state.id));
+    setUser(users.find(user => user.id === location.state.id));
   }, [users, location, history]);
 
-  const handleSubmitInfo = async (values) => {
+  const handleSubmitInfo = async values => {
     setLoading(true);
 
     try {
@@ -59,7 +59,7 @@ const AdminUsersUpdate = ({ users, history, location }) => {
     }
   };
 
-  const handleSubmitPassword = async (values) => {
+  const handleSubmitPassword = async values => {
     setLoading(true);
 
     try {
@@ -77,8 +77,8 @@ const AdminUsersUpdate = ({ users, history, location }) => {
 
   return (
     <Container>
-      <Row className='justify-content-end m-3'>
-        <Button variant='warning' onClick={() => history.push('/admin/users')}>
+      <Row className="justify-content-end m-3">
+        <Button variant="warning" onClick={() => history.push('/admin/users')}>
           Back to user list
         </Button>
       </Row>
@@ -86,8 +86,8 @@ const AdminUsersUpdate = ({ users, history, location }) => {
       <StyledH1>Update User Info</StyledH1>
 
       {isLoading && (
-        <Container className='d-flex justify-content-center'>
-          <Spinner animation='border' variant='primary' />
+        <Container className="d-flex justify-content-center">
+          <Spinner animation="border" variant="primary" />
         </Container>
       )}
 
@@ -116,41 +116,41 @@ const AdminUsersUpdate = ({ users, history, location }) => {
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Username</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='username'
-                placeholder='Please enter your username'
+                className="form-control"
+                type="text"
+                name="username"
+                placeholder="Please enter your username"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='username' />
+                <ErrorMessage name="username" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Email</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='email'
-                placeholder='Please enter your email'
+                className="form-control"
+                type="text"
+                name="email"
+                placeholder="Please enter your email"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='email' />
+                <ErrorMessage name="email" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Address</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='address'
-                placeholder='Please enter your address'
+                className="form-control"
+                type="text"
+                name="address"
+                placeholder="Please enter your address"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='address' />
+                <ErrorMessage name="address" />
               </StyledErrorFeedback>
             </FormGroup>
-            <Row className='justify-content-center'>
-              <Button className='m-2 mb-5' type='submit'>
+            <Row className="justify-content-center">
+              <Button className="m-2 mb-5" type="submit">
                 Update Basic Information
               </Button>
             </Row>
@@ -174,17 +174,17 @@ const AdminUsersUpdate = ({ users, history, location }) => {
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>New Password</StyledLabel>
               <Field
-                className='form-control'
-                type='password'
-                name='newPassword'
-                placeholder='Please enter your new password'
+                className="form-control"
+                type="password"
+                name="newPassword"
+                placeholder="Please enter your new password"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='newPassword' />
+                <ErrorMessage name="newPassword" />
               </StyledErrorFeedback>
             </FormGroup>
-            <Row className='justify-content-center'>
-              <Button className='m-2 mb-5' type='submit' variant='danger'>
+            <Row className="justify-content-center">
+              <Button className="m-2 mb-5" type="submit" variant="danger">
                 Reset Password
               </Button>
             </Row>
@@ -195,7 +195,7 @@ const AdminUsersUpdate = ({ users, history, location }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { users } = state.admin;
 
   return {

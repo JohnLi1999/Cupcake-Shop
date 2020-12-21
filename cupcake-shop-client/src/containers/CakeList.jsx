@@ -15,31 +15,28 @@ const StyledH1 = styled.h1`
 `;
 
 const CakeList = ({ cakes, history, match, addCakeToCart }) => {
-  const addToCartHandler = (cake) => {
+  const addToCartHandler = cake => {
     if (isAuthenticated()) {
-      return addCakeToCart(
-        cake.id,
-        `/category/${cake.category}`
-      );
+      return addCakeToCart(cake.id, `/category/${cake.category}`);
     }
     addItemToTempCart(cake.id);
     toast.success('Cake added!');
     return history.push(`/category/${cake.category}`);
-  }
+  };
 
   return (
     <Container>
       <StyledH1>{match.params.name.toUpperCase()}</StyledH1>
-      <Row>{
-        filterByCategory(cakes, match.params.name).map(cake => (
+      <Row>
+        {filterByCategory(cakes, match.params.name).map(cake => (
           <Cake key={cake.id} cake={cake} addToCart={addToCartHandler} />
-        ))
-      }</Row>
+        ))}
+      </Row>
     </Container>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { cakes } = state.cake;
 
   return {

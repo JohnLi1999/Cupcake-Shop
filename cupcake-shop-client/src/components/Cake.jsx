@@ -16,7 +16,7 @@ const CakeListOutlineDiv = styled.div`
   &:hover {
     border: 2px solid #ff6600;
   }
-`
+`;
 
 const SeeDetailsDiv = styled.div`
   position: absolute;
@@ -53,7 +53,7 @@ const CakeListImg = styled.img`
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-`
+`;
 
 const CakeListInfoDiv = styled.div`
   margin: 0px 45px;
@@ -84,11 +84,11 @@ const CakePriceDiv = styled.div`
   font-size: 16px;
   margin-bottom: 5px;
   font-weight: 700;
-`
+`;
 
 const TextRightDiv = styled.div`
   text-align: right;
-`
+`;
 
 const CakeListButton = styled.button`
   padding: 5px 10px;
@@ -104,18 +104,14 @@ const CakeListButton = styled.button`
     background-color: #f2f2f2;
   }
 `;
- 
-const Cake = ({ cake, addToCart }) => 
+
+const Cake = ({ cake, addToCart }) => (
   <Col lg={4} sm={6} xs={12} key={cake.id}>
     <CakeListOutlineDiv>
       <CakeListImageAreaDiv>
-        <SeeDetailsDiv>
-          See Details
-        </SeeDetailsDiv>
+        <SeeDetailsDiv>See Details</SeeDetailsDiv>
         <Link to={`/cakes/${cake.name}`}>
-          <CakeListImg 
-            src={cake.cover}
-            alt={cake.name} />
+          <CakeListImg src={cake.cover} alt={cake.name} />
         </Link>
       </CakeListImageAreaDiv>
       <CakeListInfoDiv>
@@ -123,17 +119,15 @@ const Cake = ({ cake, addToCart }) =>
           <CakeNameDiv>{cake.name}</CakeNameDiv>
           <CakeCategoryDiv>{cake.category}</CakeCategoryDiv>
         </CakeNameAreaDiv>
-        <CakePriceDiv>
-          $ {cake.price}
-        </CakePriceDiv>
+        <CakePriceDiv>$ {cake.price}</CakePriceDiv>
         <TextRightDiv>
-          <CakeListButton
-            onClick={() => addToCart(cake)}>
+          <CakeListButton onClick={() => addToCart(cake)}>
             Add to Cart
           </CakeListButton>
         </TextRightDiv>
       </CakeListInfoDiv>
     </CakeListOutlineDiv>
-  </Col>;
+  </Col>
+);
 
 export default Cake;

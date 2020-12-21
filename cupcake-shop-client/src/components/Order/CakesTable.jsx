@@ -1,9 +1,9 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const CakesTable = ({ order }) => 
-  <Table striped bordered hover responsive className='text-center'>
-    <thead className='thead-dark'>
+const CakesTable = ({ order }) => (
+  <Table striped bordered hover responsive className="text-center">
+    <thead className="thead-dark">
       <tr>
         <th>Cake Name</th>
         <th>Image</th>
@@ -12,7 +12,7 @@ const CakesTable = ({ order }) =>
       </tr>
     </thead>
     <tbody>
-      {order.orderItemList.map((orderItem) => (
+      {order.orderItemList.map(orderItem => (
         <tr key={orderItem.cakeName}>
           <td>{orderItem.cakeName}</td>
           <td>
@@ -28,5 +28,6 @@ const CakesTable = ({ order }) =>
       ))}
     </tbody>
   </Table>
+);
 
 export default CakesTable;

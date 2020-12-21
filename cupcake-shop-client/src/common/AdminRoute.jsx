@@ -17,6 +17,6 @@ const AdminRoute = ({ ...props }) => {
   }
 
   // If not logged in, redirect the user to the login page
-  return <Redirect to='/login' />;
+  return <Redirect to="/login" />;
 };
 export default AdminRoute;

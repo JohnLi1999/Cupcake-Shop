@@ -16,7 +16,7 @@ const CakeDetailNameDiv = styled.div`
   @media (max-width: 700px) {
     font-size: 30px;
   }
-`;  
+`;
 
 const CakeDetailCategoryDiv = styled.div`
   margin-bottom: 20px;
@@ -33,7 +33,7 @@ const CakeDetailCategoryDiv = styled.div`
   }
 `;
 
-const CakeDetailDescriptionDiv = styled.div`  
+const CakeDetailDescriptionDiv = styled.div`
   margin-bottom: 20px;
   font-size: 25px;
   color: #8c8c8c;
@@ -59,7 +59,7 @@ const CakeDetailPriceDiv = styled.div`
   @media (max-width: 700px) {
     font-size: 15px;
   }
-`
+`;
 
 const CakeDetailButton = styled.button`
   margin: 20px;
@@ -75,23 +75,18 @@ const CakeDetailButton = styled.button`
     color: #993366;
     background-color: #ffffff;
   }
-`
+`;
 
-const CakeDetailsDescription = ({ cake, addToCart }) => 
-  <Col sm={5} lg={7} className='text-center'>
+const CakeDetailsDescription = ({ cake, addToCart }) => (
+  <Col sm={5} lg={7} className="text-center">
     <CakeDetailNameDiv>{cake.name}</CakeDetailNameDiv>
-    <CakeDetailCategoryDiv>
-      Category: {cake.category}
-    </CakeDetailCategoryDiv>
-    <CakeDetailDescriptionDiv>
-      {cake.description}
-    </CakeDetailDescriptionDiv>
-    <CakeDetailPriceDiv>
-      $ {cake.price}
-    </CakeDetailPriceDiv>
+    <CakeDetailCategoryDiv>Category: {cake.category}</CakeDetailCategoryDiv>
+    <CakeDetailDescriptionDiv>{cake.description}</CakeDetailDescriptionDiv>
+    <CakeDetailPriceDiv>$ {cake.price}</CakeDetailPriceDiv>
     <CakeDetailButton onClick={() => addToCart(cake.id)}>
       Add to Cart
     </CakeDetailButton>
   </Col>
+);
 
 export default CakeDetailsDescription;

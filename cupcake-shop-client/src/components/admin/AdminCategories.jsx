@@ -23,7 +23,7 @@ const StyledErrorFeedback = styled.div`
 const AdminCategories = ({ categories, loadCategories }) => {
   const [isLoading, setLoading] = useState(false);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     setLoading(true);
 
     try {
@@ -43,8 +43,8 @@ const AdminCategories = ({ categories, loadCategories }) => {
   return (
     <Container>
       {isLoading && (
-        <Container className='d-flex justify-content-center'>
-          <Spinner animation='border' variant='primary' />
+        <Container className="d-flex justify-content-center">
+          <Spinner animation="border" variant="primary" />
         </Container>
       )}
 
@@ -61,17 +61,17 @@ const AdminCategories = ({ categories, loadCategories }) => {
         onSubmit={handleSubmit}>
         {() => (
           <Form>
-            <FormGroup as={Col} md={6} className='mt-4'>
+            <FormGroup as={Col} md={6} className="mt-4">
               <Field
-                className='form-control'
-                type='text'
-                name='name'
-                placeholder='Enter the new category name'
+                className="form-control"
+                type="text"
+                name="name"
+                placeholder="Enter the new category name"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='name' />
+                <ErrorMessage name="name" />
               </StyledErrorFeedback>
-              <Button className='mt-3 mb-2' type='submit'>
+              <Button className="mt-3 mb-2" type="submit">
                 Add a new category
               </Button>
             </FormGroup>
@@ -79,8 +79,8 @@ const AdminCategories = ({ categories, loadCategories }) => {
         )}
       </Formik>
 
-      <Table striped bordered hover responsive className='text-center mt-3'>
-        <thead className='thead-dark'>
+      <Table striped bordered hover responsive className="text-center mt-3">
+        <thead className="thead-dark">
           <tr>
             <th>ID</th>
             <th>NAME</th>
@@ -89,7 +89,7 @@ const AdminCategories = ({ categories, loadCategories }) => {
           </tr>
         </thead>
         <tbody>
-          {categories.map((category) => (
+          {categories.map(category => (
             <tr key={category.id}>
               <td>{category.id}</td>
               <td>{category.name}</td>
@@ -103,7 +103,7 @@ const AdminCategories = ({ categories, loadCategories }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { categories } = state.category;
 
   return {

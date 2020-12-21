@@ -17,7 +17,7 @@ const FullWidthContainer = styled(Container)`
 `;
 
 const StyledOrderStatus = styled.div`
-  color: ${(props) => props.color};
+  color: ${props => props.color};
 `;
 
 const AdminOrders = ({
@@ -52,41 +52,41 @@ const AdminOrders = ({
     }
   };
 
-  const orderStatus = (status) => {
+  const orderStatus = status => {
     if (status === PLACED) {
-      return <StyledOrderStatus color='#33cc33'>{status}</StyledOrderStatus>;
+      return <StyledOrderStatus color="#33cc33">{status}</StyledOrderStatus>;
     } else if (status === DELIVERED) {
-      return <StyledOrderStatus color='#0000ff'>{status}</StyledOrderStatus>;
+      return <StyledOrderStatus color="#0000ff">{status}</StyledOrderStatus>;
     } else {
-      return <StyledOrderStatus color='#000000'>{status}</StyledOrderStatus>;
+      return <StyledOrderStatus color="#000000">{status}</StyledOrderStatus>;
     }
   };
 
   const getTargetOrderList = (orderList, targetStatus) =>
     targetStatus
-      ? orders.filter((order) => order.orderStatus === targetStatus)
+      ? orders.filter(order => order.orderStatus === targetStatus)
       : orderList;
 
-  const buildOrderList = (targetStatus) => (
-    <Table striped bordered hover responsive className='text-center mt-2'>
-      <thead className='thead-dark'>
+  const buildOrderList = targetStatus => (
+    <Table striped bordered hover responsive className="text-center mt-2">
+      <thead className="thead-dark">
         <tr>
-          <th width='5%'>ID</th>
-          <th width='7%'>USER</th>
-          <th width='5%'>ORDER STATUS</th>
-          <th width='5%'>RECEIVER</th>
+          <th width="5%">ID</th>
+          <th width="7%">USER</th>
+          <th width="5%">ORDER STATUS</th>
+          <th width="5%">RECEIVER</th>
           <th>DELIVERY ADDRESS</th>
           <th>DETAILS</th>
-          <th width='5%'>TOTAL PRICE ($)</th>
-          <th width='5%'>TOTAL AMOUNT</th>
-          <th width='5%'>PAY TYPE</th>
-          <th width='5%'>CREATED AT</th>
-          <th width='5%'>UPDATED AT</th>
-          <th width='10%'>OPERATIONS</th>
+          <th width="5%">TOTAL PRICE ($)</th>
+          <th width="5%">TOTAL AMOUNT</th>
+          <th width="5%">PAY TYPE</th>
+          <th width="5%">CREATED AT</th>
+          <th width="5%">UPDATED AT</th>
+          <th width="10%">OPERATIONS</th>
         </tr>
       </thead>
       <tbody>
-        {getTargetOrderList(orders, targetStatus).map((order) => (
+        {getTargetOrderList(orders, targetStatus).map(order => (
           <tr key={order.id}>
             <td>{order.id}</td>
             <td>{order.username}</td>
@@ -94,7 +94,7 @@ const AdminOrders = ({
             <td>{order.receiver}</td>
             <td>{order.address}</td>
             <td>
-              {order.orderItemList.map((orderItem) => (
+              {order.orderItemList.map(orderItem => (
                 <div key={orderItem.cakeName}>
                   {orderItem.cakeName} ({orderItem.price}) * {orderItem.amount}
                 </div>
@@ -108,7 +108,7 @@ const AdminOrders = ({
             <td>
               {order.orderStatus === PLACED && (
                 <Button
-                  variant='primary'
+                  variant="primary"
                   onClick={() => {
                     handleUpdate(order.id, DELIVERED);
                   }}>
@@ -117,7 +117,7 @@ const AdminOrders = ({
               )}
               {order.orderStatus === DELIVERED && (
                 <Button
-                  variant='success'
+                  variant="success"
                   onClick={() => {
                     handleUpdate(order.id, FINISHED);
                   }}>
@@ -125,7 +125,7 @@ const AdminOrders = ({
                 </Button>
               )}
               {order.orderStatus === FINISHED && (
-                <Button variant='secondary' disabled>
+                <Button variant="secondary" disabled>
                   NO OPERATION
                 </Button>
               )}
@@ -138,8 +138,8 @@ const AdminOrders = ({
 
   return (
     <FullWidthContainer>
-      <Tabs defaultActiveKey='all'>
-        <Tab eventKey='all' title='All ORDERS'>
+      <Tabs defaultActiveKey="all">
+        <Tab eventKey="all" title="All ORDERS">
           {buildOrderList()}
         </Tab>
         <Tab eventKey={PLACED} title={PLACED}>
@@ -156,7 +156,7 @@ const AdminOrders = ({
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { orders } = state.admin;
 
   return {
@@ -164,9 +164,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    orderLoadingAll: (orders) => dispatch(actions.orderLoadingAll(orders)),
+    orderLoadingAll: orders => dispatch(actions.orderLoadingAll(orders)),
     orderStatusUpdate: (orderId, newStatus) =>
       dispatch(actions.orderStatusUpdate(orderId, newStatus)),
   };

@@ -20,7 +20,7 @@ const AdminUsers = ({ users, userLoadingAll, userDelete, history }) => {
     loadAllUsers();
   }, [loadAllUsers]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     try {
       const response = await deleteUser(id);
       userDelete(id);
@@ -34,16 +34,16 @@ const AdminUsers = ({ users, userLoadingAll, userDelete, history }) => {
 
   return (
     <Container>
-      <Row className='justify-content-end'>
+      <Row className="justify-content-end">
         <Button
-          className='m-4'
-          variant='info'
+          className="m-4"
+          variant="info"
           onClick={() => history.push('/admin/users/add')}>
           Add User
         </Button>
       </Row>
-      <Table striped bordered hover responsive className='text-center mt-3'>
-        <thead className='thead-dark'>
+      <Table striped bordered hover responsive className="text-center mt-3">
+        <thead className="thead-dark">
           <tr>
             <th>ID</th>
             <th>USERNAME</th>
@@ -54,7 +54,7 @@ const AdminUsers = ({ users, userLoadingAll, userDelete, history }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {users.map(user => (
             <tr key={user.id}>
               <td>{user.id}</td>
               <td>{user.username}</td>
@@ -63,14 +63,14 @@ const AdminUsers = ({ users, userLoadingAll, userDelete, history }) => {
               <td>{user.roles.includes(ROLE_ADMIN) ? 'Admin' : 'User'}</td>
               <td>
                 {user.roles.includes(ROLE_ADMIN) ? (
-                  <Button variant='secondary' className='m-1' disabled>
+                  <Button variant="secondary" className="m-1" disabled>
                     NO OPERATION
                   </Button>
                 ) : (
                   <>
                     <Button
-                      variant='warning'
-                      className='m-1'
+                      variant="warning"
+                      className="m-1"
                       onClick={() =>
                         history.push(`/admin/users/update/${user.id}`, {
                           id: user.id,
@@ -79,7 +79,7 @@ const AdminUsers = ({ users, userLoadingAll, userDelete, history }) => {
                       Update Info
                     </Button>
                     <Button
-                      variant='danger'
+                      variant="danger"
                       onClick={() => handleDelete(user.id)}>
                       Delete
                     </Button>
@@ -94,7 +94,7 @@ const AdminUsers = ({ users, userLoadingAll, userDelete, history }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { users } = state.admin;
 
   return {
@@ -102,10 +102,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    userLoadingAll: (users) => dispatch(actions.userLoadingAll(users)),
-    userDelete: (id) => dispatch(actions.userDelete(id)),
+    userLoadingAll: users => dispatch(actions.userLoadingAll(users)),
+    userDelete: id => dispatch(actions.userDelete(id)),
   };
 };
 

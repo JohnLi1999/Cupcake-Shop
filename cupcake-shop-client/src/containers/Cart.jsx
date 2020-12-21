@@ -45,60 +45,62 @@ const Cart = ({
     }
   };
 
-  const addToCartHandler = (cakeId) => {
+  const addToCartHandler = cakeId => {
     if (isAuthenticated()) {
       return addCakeToCart(cakeId, '/cart');
     }
     addItemToTempCart(cakeId);
     toast.success('Cake added!');
     return history.push('/cart');
-  }
+  };
 
-  const reduceInCartHandler = (cakeId) => {
+  const reduceInCartHandler = cakeId => {
     if (isAuthenticated()) {
       return reduceCakeInCart(cakeId);
     }
     reduceItemInTempCart(cakeId);
     toast.success('Cake reduced!');
     return history.push('/cart');
-  }
+  };
 
-  const deleteFromCartHandler = (cakeId) => {
+  const deleteFromCartHandler = cakeId => {
     if (isAuthenticated()) {
       return deleteCakeFromCart(cakeId);
     }
     deleteItemFromTempCart(cakeId);
     toast.success('Cake successfully removed from your cart');
     return history.push('/cart');
-  }
+  };
 
   const buildCartList = (cart, cakes) => {
     if (cakes.length < 1) {
       history.push('/');
     } else {
-      return cart.map((cartItem) => {
-        const cake = cakes.find((cake) => cake.id === cartItem.cakeId);
-        return <CartItem 
-          cake={cake}
-          amount={cartItem.amount}
-          history={history}
-          addToCart={addToCartHandler}
-          reduceInCart={reduceInCartHandler}
-          deleteFromCart={deleteFromCartHandler} 
-        />;
+      return cart.map(cartItem => {
+        const cake = cakes.find(cake => cake.id === cartItem.cakeId);
+        return (
+          <CartItem
+            cake={cake}
+            amount={cartItem.amount}
+            history={history}
+            addToCart={addToCartHandler}
+            reduceInCart={reduceInCartHandler}
+            deleteFromCart={deleteFromCartHandler}
+          />
+        );
       });
     }
   };
 
   const displayCart = () => {
     if (!!getTempCart()) {
-      return buildCartList(getTempCart(), cakes)
+      return buildCartList(getTempCart(), cakes);
     } else {
       return buildCartList(cart, cakes);
     }
-  }
+  };
 
-  const getSubTotalPrice = (cakes) => {
+  const getSubTotalPrice = cakes => {
     if (cakes.length < 1) {
       return history.push('/');
     } else {
@@ -108,7 +110,7 @@ const Cart = ({
         return getSubtotalPrice(getTempCart(), cakes);
       }
     }
-  }
+  };
 
   const checkoutHandler = () => {
     if (isAuthenticated()) {
@@ -121,7 +123,7 @@ const Cart = ({
         path: '/checkout',
       });
     }
-  }
+  };
 
   return (
     <Container>
@@ -130,19 +132,11 @@ const Cart = ({
       ) : (
         <>
           <StyledH1>Cart</StyledH1>
-          <Row>
-            {displayCart()}
-          </Row>
-          <StyledHr /> 
-          <StyledH1>
-            Subtotal: ${' '}
-            {getSubTotalPrice(cakes)}
-          </StyledH1>
-          <Row className='justify-content-end'>
-            <Button
-              variant='info'
-              className='mb-5'
-              onClick={checkoutHandler}>
+          <Row>{displayCart()}</Row>
+          <StyledHr />
+          <StyledH1>Subtotal: $ {getSubTotalPrice(cakes)}</StyledH1>
+          <Row className="justify-content-end">
+            <Button variant="info" className="mb-5" onClick={checkoutHandler}>
               Proceed to Checkout
             </Button>
           </Row>
@@ -152,7 +146,7 @@ const Cart = ({
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { cart } = state;
   const { cakes } = state.cake;
 

@@ -35,7 +35,7 @@ const StyledErrorFeedback = styled.div`
 const AdminUsersAdd = ({ history }) => {
   const [isLoading, setLoading] = useState(false);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     setLoading(true);
 
     const signUpRequest = Object.assign({}, values);
@@ -56,8 +56,8 @@ const AdminUsersAdd = ({ history }) => {
 
   return (
     <Container>
-      <Row className='justify-content-end m-3'>
-        <Button variant='warning' onClick={() => history.push('/admin/users')}>
+      <Row className="justify-content-end m-3">
+        <Button variant="warning" onClick={() => history.push('/admin/users')}>
           Back to user list
         </Button>
       </Row>
@@ -65,8 +65,8 @@ const AdminUsersAdd = ({ history }) => {
       <StyledH1>Add a new User</StyledH1>
 
       {isLoading && (
-        <Container className='d-flex justify-content-center'>
-          <Spinner animation='border' variant='primary' />
+        <Container className="d-flex justify-content-center">
+          <Spinner animation="border" variant="primary" />
         </Container>
       )}
 
@@ -106,70 +106,70 @@ const AdminUsersAdd = ({ history }) => {
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Username</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='username'
-                placeholder='Enter the username here'
+                className="form-control"
+                type="text"
+                name="username"
+                placeholder="Enter the username here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='username' />
+                <ErrorMessage name="username" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Email</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='email'
-                placeholder='Enter the email here'
+                className="form-control"
+                type="text"
+                name="email"
+                placeholder="Enter the email here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='email' />
+                <ErrorMessage name="email" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Password</StyledLabel>
               <Field
-                className='form-control'
-                type='password'
-                name='password'
-                placeholder='Enter the password here'
+                className="form-control"
+                type="password"
+                name="password"
+                placeholder="Enter the password here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='password' />
+                <ErrorMessage name="password" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Confirm Password</StyledLabel>
               <Field
-                className='form-control'
-                type='password'
-                name='confirm_password'
-                placeholder='Confirm the password again'
+                className="form-control"
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm the password again"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='confirm_password' />
+                <ErrorMessage name="confirm_password" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Address</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='address'
-                placeholder='Enter the address here'
+                className="form-control"
+                type="text"
+                name="address"
+                placeholder="Enter the address here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='address' />
+                <ErrorMessage name="address" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Roles</StyledLabel>
               <Col>
                 <Field
-                  className='form-check-inline'
-                  type='checkbox'
-                  name='roles'
+                  className="form-check-inline"
+                  type="checkbox"
+                  name="roles"
                   value={ROLE_USER}
                   checked
                 />
@@ -177,19 +177,19 @@ const AdminUsersAdd = ({ history }) => {
               </Col>
               <Col>
                 <Field
-                  className='form-check-inline'
-                  type='checkbox'
-                  name='roles'
+                  className="form-check-inline"
+                  type="checkbox"
+                  name="roles"
                   value={ROLE_ADMIN}
                 />
                 Admin
               </Col>
               <StyledErrorFeedback>
-                <ErrorMessage name='roles' />
+                <ErrorMessage name="roles" />
               </StyledErrorFeedback>
             </FormGroup>
-            <Row className='justify-content-center'>
-              <Button className='m-3' size='lg' type='submit'>
+            <Row className="justify-content-center">
+              <Button className="m-3" size="lg" type="submit">
                 Add
               </Button>
             </Row>

@@ -15,10 +15,10 @@ const ErrorContent = styled(Alert)`
 
 const NotFound = () => (
   <Container>
-    <Alert variant='info' className='text-center m-5'>
+    <Alert variant="info" className="text-center m-5">
       <ErrorTitle>Oops!</ErrorTitle>
       <ErrorContent>The page you are visiting is not found</ErrorContent>
-      <Link to='/'>
+      <Link to="/">
         <Button>Go Back to Home Page</Button>
       </Link>
     </Alert>

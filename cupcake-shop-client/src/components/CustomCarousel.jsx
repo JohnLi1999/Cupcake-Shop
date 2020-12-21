@@ -25,9 +25,8 @@ const StyledH3 = styled.h3`
 const StyledDescription = styled.div`
   @media (max-width: 600px) {
     font-size: 15px;
-  }`
-;
-
+  }
+`;
 const StyledButton = styled(Button)`
   margin-top: 20px;
   margin-bottom: 30px;
@@ -38,21 +37,19 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const CustomCarousel = ({ cakes, checkCart, checkCake }) =>       
+const CustomCarousel = ({ cakes, checkCart, checkCake }) => (
   <Carousel>
     <Carousel.Item>
       <StyledDiv></StyledDiv>
       <Carousel.Caption>
         <StyledH2>Welcome to the Cupcake Shop</StyledH2>
         <StyledH3>Hope you find your favorite cake here</StyledH3>
-        <StyledButton
-          variant='warning'
-          onClick={checkCart}>
+        <StyledButton variant="warning" onClick={checkCart}>
           Check your cart
         </StyledButton>
       </Carousel.Caption>
     </Carousel.Item>
-    {filterByTag(cakes, TODAY_SPECIAL).map((cake) => (
+    {filterByTag(cakes, TODAY_SPECIAL).map(cake => (
       <Carousel.Item key={cake.id}>
         <StyledDiv></StyledDiv>
         <Carousel.Caption>
@@ -61,14 +58,13 @@ const CustomCarousel = ({ cakes, checkCart, checkCake }) =>
             <StyledH2>{cake.name}</StyledH2>
             <StyledDescription>{cake.description}</StyledDescription>
           </Container>
-          <StyledButton
-            variant='warning'
-            onClick={() => checkCake(cake.name)}>
+          <StyledButton variant="warning" onClick={() => checkCake(cake.name)}>
             See Details
           </StyledButton>
         </Carousel.Caption>
       </Carousel.Item>
     ))}
   </Carousel>
+);
 
 export default CustomCarousel;

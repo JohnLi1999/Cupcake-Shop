@@ -19,44 +19,44 @@ const AdminCakes = ({ loadCakes, cakes, history }) => {
   }, [loadCakes]);
 
   const getTargetCakeList = (cakeList, tag) =>
-    tag ? cakeList.filter((cake) => cake.tags.includes(tag)) : cakeList;
+    tag ? cakeList.filter(cake => cake.tags.includes(tag)) : cakeList;
 
-  const buildCakeList = (targetTab) => (
-    <Table striped bordered hover responsive className='text-center mt-2'>
-      <thead className='thead-dark'>
+  const buildCakeList = targetTab => (
+    <Table striped bordered hover responsive className="text-center mt-2">
+      <thead className="thead-dark">
         <tr>
           <th>ID</th>
           <th>NAME</th>
-          <th width='10%'>IMAGES</th>
+          <th width="10%">IMAGES</th>
           <th>DESCRIPTION</th>
           <th>PRICE ($)</th>
           <th>STOCK</th>
           <th>CATEGORY</th>
-          <th width='5%'>CREATED AT</th>
-          <th width='5%'>UPDATED AT</th>
+          <th width="5%">CREATED AT</th>
+          <th width="5%">UPDATED AT</th>
           <th>OPERATIONS</th>
         </tr>
       </thead>
       <tbody>
-        {getTargetCakeList(cakes, targetTab).map((cake) => (
+        {getTargetCakeList(cakes, targetTab).map(cake => (
           <tr key={cake.id}>
             <td>{cake.id}</td>
             <td>{cake.name}</td>
-            <td className='d-flex'>
+            <td className="d-flex">
               <img
-                className='m-1'
+                className="m-1"
                 style={{ width: 50, height: 50 }}
                 src={cake.cover}
                 alt={cake.name}
               />
               <img
-                className='m-1'
+                className="m-1"
                 style={{ width: 50, height: 50 }}
                 src={cake.img1}
                 alt={cake.name}
               />
               <img
-                className='m-1'
+                className="m-1"
                 style={{ width: 50, height: 50 }}
                 src={cake.img2}
                 alt={cake.name}
@@ -70,8 +70,8 @@ const AdminCakes = ({ loadCakes, cakes, history }) => {
             <td>{cake.updatedAt}</td>
             <td>
               <Button
-                variant='warning'
-                className='m-1'
+                variant="warning"
+                className="m-1"
                 onClick={() =>
                   history.push(`/admin/cakes/update/${cake.id}`, {
                     update: true,
@@ -89,22 +89,22 @@ const AdminCakes = ({ loadCakes, cakes, history }) => {
 
   return (
     <FullWidthContainer>
-      <Row className='justify-content-end'>
+      <Row className="justify-content-end">
         <Button
-          className='mt-2 mr-4'
-          variant='info'
+          className="mt-2 mr-4"
+          variant="info"
           onClick={() => history.push('/admin/cakes/add', { add: true })}>
           Add a new Cake
         </Button>
       </Row>
-      <Tabs defaultActiveKey='all'>
-        <Tab eventKey='all' title='All Cakes'>
+      <Tabs defaultActiveKey="all">
+        <Tab eventKey="all" title="All Cakes">
           {buildCakeList()}
         </Tab>
-        <Tab eventKey='today_special' title="Today's Special">
+        <Tab eventKey="today_special" title="Today's Special">
           {buildCakeList(TODAY_SPECIAL)}
         </Tab>
-        <Tab eventKey='best_selling' title='Best Selling'>
+        <Tab eventKey="best_selling" title="Best Selling">
           {buildCakeList(BEST_SELLING)}
         </Tab>
       </Tabs>
@@ -112,7 +112,7 @@ const AdminCakes = ({ loadCakes, cakes, history }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { cakes } = state.cake;
 
   return {

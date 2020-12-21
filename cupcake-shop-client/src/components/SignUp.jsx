@@ -34,7 +34,7 @@ const StyledErrorFeedback = styled.div`
 const SignUp = ({ history }) => {
   const [isLoading, setLoading] = useState(false);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     setLoading(true);
 
     const signUpRequest = Object.assign({}, values);
@@ -58,8 +58,8 @@ const SignUp = ({ history }) => {
       <StyledH1>Sign Up</StyledH1>
 
       {isLoading && (
-        <Container className='d-flex justify-content-center'>
-          <Spinner animation='border' variant='primary' />
+        <Container className="d-flex justify-content-center">
+          <Spinner animation="border" variant="primary" />
         </Container>
       )}
 
@@ -96,71 +96,71 @@ const SignUp = ({ history }) => {
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Username</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='username'
-                placeholder='Please enter your username'
+                className="form-control"
+                type="text"
+                name="username"
+                placeholder="Please enter your username"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='username' />
+                <ErrorMessage name="username" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Email</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='email'
-                placeholder='Please enter your email'
+                className="form-control"
+                type="text"
+                name="email"
+                placeholder="Please enter your email"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='email' />
+                <ErrorMessage name="email" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Password</StyledLabel>
               <Field
-                className='form-control'
-                type='password'
-                name='password'
-                placeholder='Please enter your password'
+                className="form-control"
+                type="password"
+                name="password"
+                placeholder="Please enter your password"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='password' />
+                <ErrorMessage name="password" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Confirm Password</StyledLabel>
               <Field
-                className='form-control'
-                type='password'
-                name='confirm_password'
-                placeholder='Please confirm your password'
+                className="form-control"
+                type="password"
+                name="confirm_password"
+                placeholder="Please confirm your password"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='confirm_password' />
+                <ErrorMessage name="confirm_password" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Address</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='address'
-                placeholder='Please enter your address'
+                className="form-control"
+                type="text"
+                name="address"
+                placeholder="Please enter your address"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='address' />
+                <ErrorMessage name="address" />
               </StyledErrorFeedback>
             </FormGroup>
-            <Row className='justify-content-center'>
-              <Button className='m-3' size='lg' type='submit'>
+            <Row className="justify-content-center">
+              <Button className="m-3" size="lg" type="submit">
                 Sign Up
               </Button>
             </Row>
-            <Row className='justify-content-center'>
+            <Row className="justify-content-center">
               <FormGroup>
-                Or <Link to='/login'>Log In</Link> now
+                Or <Link to="/login">Log In</Link> now
               </FormGroup>
             </Row>
           </Form>

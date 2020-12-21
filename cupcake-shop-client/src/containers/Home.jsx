@@ -22,39 +22,40 @@ const FullWidthContainer = styled(Container)`
 const Home = ({ cakes, history, addCakeToCart }) => {
   const checkCartHandler = () => history.push('/cart');
 
-  const checkCakeHandler = (cakeName) => history.push(`/cakes/${cakeName}`)
+  const checkCakeHandler = cakeName => history.push(`/cakes/${cakeName}`);
 
-  const addToCartHandler = (cake) => {
+  const addToCartHandler = cake => {
     if (isAuthenticated()) {
       return addCakeToCart(cake.id, '/');
     }
     addItemToTempCart(cake.id);
     toast.success('Cake added!');
     return history.push('/');
-  }
+  };
 
   return (
     <FullWidthContainer>
-      <CustomCarousel 
-        cakes={cakes} 
-        history={history} 
-        checkCart={checkCartHandler} 
-        checkCake={checkCakeHandler} />
+      <CustomCarousel
+        cakes={cakes}
+        history={history}
+        checkCart={checkCartHandler}
+        checkCake={checkCakeHandler}
+      />
       <Container>
-        <Alert variant='primary' className='mt-5'>
+        <Alert variant="primary" className="mt-5">
           Best Selling
         </Alert>
-        <Row>{
-          filterByTag(cakes, BEST_SELLING).map((cake) => (
+        <Row>
+          {filterByTag(cakes, BEST_SELLING).map(cake => (
             <Cake key={cake.id} cake={cake} addToCart={addToCartHandler} />
-          ))
-        }</Row>
+          ))}
+        </Row>
       </Container>
     </FullWidthContainer>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { cakes } = state.cake;
 
   return {

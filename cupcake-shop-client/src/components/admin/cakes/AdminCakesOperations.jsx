@@ -63,7 +63,7 @@ const AdminCakesOperations = ({
     if (!cakes.length) {
       history.push('/admin/cakes');
     } else if (location.state.update) {
-      let cake = cakes.find((cake) => cake.id === location.state.id);
+      let cake = cakes.find(cake => cake.id === location.state.id);
       cake = updateObject(cake, {
         cover: cake.cover.split('/').slice(-1)[0],
         img1: cake.img1.split('/').slice(-1)[0],
@@ -73,7 +73,7 @@ const AdminCakesOperations = ({
     }
   }, [cakes, history, location.state]);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     setLoading(true);
 
     try {
@@ -129,8 +129,8 @@ const AdminCakesOperations = ({
 
   return (
     <Container>
-      <Row className='justify-content-end m-3'>
-        <Button variant='warning' onClick={() => history.push('/admin/cakes')}>
+      <Row className="justify-content-end m-3">
+        <Button variant="warning" onClick={() => history.push('/admin/cakes')}>
           Back to cake list
         </Button>
       </Row>
@@ -138,8 +138,8 @@ const AdminCakesOperations = ({
       <StyledH1>Add a new Cake</StyledH1>
 
       {isLoading && (
-        <Container className='d-flex justify-content-center'>
-          <Spinner animation='border' variant='primary' />
+        <Container className="d-flex justify-content-center">
+          <Spinner animation="border" variant="primary" />
         </Container>
       )}
 
@@ -163,7 +163,7 @@ const AdminCakesOperations = ({
             .max(150, 'Username should have 150 characters or less'),
           description: Yup.string().required('Description is required'),
           price: Yup.number()
-            .test('only two decimals are allowed', (value) =>
+            .test('only two decimals are allowed', value =>
               (value + '').match(/^([0-9]+[.]?[0-9]?[0-9]?|[0-9]+)$/)
             )
             .required('Price is required')
@@ -178,7 +178,7 @@ const AdminCakesOperations = ({
           img2: Yup.string().required('Image 2 is required'),
           category: Yup.string()
             .required('Category is required')
-            .test('Please select a category', (value) => value !== 'default'),
+            .test('Please select a category', value => value !== 'default'),
           tags: Yup.array(),
         })}
         onSubmit={handleSubmit}>
@@ -187,49 +187,49 @@ const AdminCakesOperations = ({
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Name</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='name'
-                placeholder='Enter the name here'
+                className="form-control"
+                type="text"
+                name="name"
+                placeholder="Enter the name here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='name' />
+                <ErrorMessage name="name" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Description</StyledLabel>
               <Field
-                className='form-control'
-                as='textarea'
-                name='description'
-                placeholder='Enter the description here'
+                className="form-control"
+                as="textarea"
+                name="description"
+                placeholder="Enter the description here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='description' />
+                <ErrorMessage name="description" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Price</StyledLabel>
               <Field
-                className='form-control'
-                type='number'
-                name='price'
-                placeholder='Enter the price here'
+                className="form-control"
+                type="number"
+                name="price"
+                placeholder="Enter the price here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='price' />
+                <ErrorMessage name="price" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Stock</StyledLabel>
               <Field
-                className='form-control'
-                type='number'
-                name='stock'
-                placeholder='Enter the stock here'
+                className="form-control"
+                type="number"
+                name="stock"
+                placeholder="Enter the stock here"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='stock' />
+                <ErrorMessage name="stock" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
@@ -240,15 +240,15 @@ const AdminCakesOperations = ({
                 )}
               </StyledLabel>
               <Field
-                className='form-control-file'
-                type='file'
-                id='cover-image'
-                name='Cover'
-                onChange={(event) => handleChange(event, setFieldValue)}
+                className="form-control-file"
+                type="file"
+                id="cover-image"
+                name="Cover"
+                onChange={event => handleChange(event, setFieldValue)}
               />
-              <Field type='text' name='cover' hidden />
+              <Field type="text" name="cover" hidden />
               <StyledErrorFeedback>
-                <ErrorMessage name='cover' />
+                <ErrorMessage name="cover" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
@@ -257,15 +257,15 @@ const AdminCakesOperations = ({
                 {location.state.update && <span>({cake.img1} as default)</span>}
               </StyledLabel>
               <Field
-                className='form-control-file'
-                type='file'
-                id='img1-image'
-                name='image1'
-                onChange={(event) => handleChange(event, setFieldValue)}
+                className="form-control-file"
+                type="file"
+                id="img1-image"
+                name="image1"
+                onChange={event => handleChange(event, setFieldValue)}
               />
-              <Field type='text' name='img1' hidden />
+              <Field type="text" name="img1" hidden />
               <StyledErrorFeedback>
-                <ErrorMessage name='img1' />
+                <ErrorMessage name="img1" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
@@ -274,57 +274,57 @@ const AdminCakesOperations = ({
                 {location.state.update && <span>({cake.img2} as default)</span>}
               </StyledLabel>
               <Field
-                className='form-control-file'
-                type='file'
-                id='img2-image'
-                name='image2'
-                onChange={(event) => handleChange(event, setFieldValue)}
+                className="form-control-file"
+                type="file"
+                id="img2-image"
+                name="image2"
+                onChange={event => handleChange(event, setFieldValue)}
               />
-              <Field type='text' name='img2' hidden />
+              <Field type="text" name="img2" hidden />
               <StyledErrorFeedback>
-                <ErrorMessage name='img2' />
+                <ErrorMessage name="img2" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Category</StyledLabel>
-              <Field as='select' name='category' className='form-control'>
-                <option value='default'>--- Select a Category ---</option>
-                {categories.map((category) => (
+              <Field as="select" name="category" className="form-control">
+                <option value="default">--- Select a Category ---</option>
+                {categories.map(category => (
                   <option key={category.name} value={category.name}>
                     {category.name}
                   </option>
                 ))}
               </Field>
               <StyledErrorFeedback>
-                <ErrorMessage name='category' />
+                <ErrorMessage name="category" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Tags</StyledLabel>
               <Col>
                 <Field
-                  className='form-check-inline'
-                  type='checkbox'
-                  name='tags'
+                  className="form-check-inline"
+                  type="checkbox"
+                  name="tags"
                   value={TODAY_SPECIAL}
                 />
                 Today's Special
               </Col>
               <Col>
                 <Field
-                  className='form-check-inline'
-                  type='checkbox'
-                  name='tags'
+                  className="form-check-inline"
+                  type="checkbox"
+                  name="tags"
                   value={BEST_SELLING}
                 />
                 Best Selling
               </Col>
               <StyledErrorFeedback>
-                <ErrorMessage name='tags' />
+                <ErrorMessage name="tags" />
               </StyledErrorFeedback>
             </FormGroup>
-            <Row className='justify-content-center'>
-              <Button className='m-3' size='lg' type='submit'>
+            <Row className="justify-content-center">
+              <Button className="m-3" size="lg" type="submit">
                 {location.state.update ? 'Update' : 'Add'}
               </Button>
             </Row>
@@ -335,7 +335,7 @@ const AdminCakesOperations = ({
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { categories } = state.category;
   const { cakes } = state.cake;
 

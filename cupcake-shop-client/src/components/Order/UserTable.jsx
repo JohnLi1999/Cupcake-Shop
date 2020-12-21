@@ -1,9 +1,9 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const UserTable = ({ order }) =>         
-  <Table striped bordered hover responsive className='text-center'>
-    <thead className='thead-dark'>
+const UserTable = ({ order }) => (
+  <Table striped bordered hover responsive className="text-center">
+    <thead className="thead-dark">
       <tr>
         <th>Receiver</th>
         <th>Address</th>
@@ -22,5 +22,6 @@ const UserTable = ({ order }) =>
       </tr>
     </tbody>
   </Table>
+);
 
 export default UserTable;

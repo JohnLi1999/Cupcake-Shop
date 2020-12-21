@@ -35,7 +35,7 @@ const StyledErrorFeedback = styled.div`
 const LogIn = ({ onLogIn, location }) => {
   const [isLoading, setLoading] = useState(false);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     setLoading(true);
 
     const logInRequest = Object.assign({}, values);
@@ -71,8 +71,8 @@ const LogIn = ({ onLogIn, location }) => {
       <StyledH1>Log In</StyledH1>
 
       {isLoading && (
-        <Container className='d-flex justify-content-center'>
-          <Spinner animation='border' variant='primary' />
+        <Container className="d-flex justify-content-center">
+          <Spinner animation="border" variant="primary" />
         </Container>
       )}
 
@@ -93,35 +93,35 @@ const LogIn = ({ onLogIn, location }) => {
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Username or Email</StyledLabel>
               <Field
-                className='form-control'
-                type='text'
-                name='usernameOrEmail'
-                placeholder='Please enter your username or email'
+                className="form-control"
+                type="text"
+                name="usernameOrEmail"
+                placeholder="Please enter your username or email"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='usernameOrEmail' />
+                <ErrorMessage name="usernameOrEmail" />
               </StyledErrorFeedback>
             </FormGroup>
             <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
               <StyledLabel>Password</StyledLabel>
               <Field
-                className='form-control'
-                type='password'
-                name='password'
-                placeholder='Please enter your password'
+                className="form-control"
+                type="password"
+                name="password"
+                placeholder="Please enter your password"
               />
               <StyledErrorFeedback>
-                <ErrorMessage name='password' />
+                <ErrorMessage name="password" />
               </StyledErrorFeedback>
             </FormGroup>
-            <Row className='justify-content-center'>
-              <Button className='m-3' size='lg' type='submit'>
+            <Row className="justify-content-center">
+              <Button className="m-3" size="lg" type="submit">
                 Log In
               </Button>
             </Row>
-            <Row className='justify-content-center'>
+            <Row className="justify-content-center">
               <FormGroup>
-                Or <Link to='/signup'>Sign Up</Link> now
+                Or <Link to="/signup">Sign Up</Link> now
               </FormGroup>
             </Row>
           </Form>

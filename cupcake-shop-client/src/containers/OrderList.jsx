@@ -32,18 +32,18 @@ const OrderList = ({ userId, orders, loadOrderList }) => {
       ) : (
         <>
           <StyledH1>Order List</StyledH1>
-          <Accordion>{     
-            orders.map((order) => (
+          <Accordion>
+            {orders.map(order => (
               <Order key={order.id} order={order} />
-            ))
-          }</Accordion>
+            ))}
+          </Accordion>
         </>
       )}
     </Container>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { id } = state.user;
   const { orders } = state;
 
@@ -53,9 +53,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    loadOrderList: (orderList) => dispatch(actions.orderLoading(orderList)),
+    loadOrderList: orderList => dispatch(actions.orderLoading(orderList)),
   };
 };
 

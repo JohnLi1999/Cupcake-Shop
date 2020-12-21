@@ -52,7 +52,7 @@ const Checkout = ({
 }) => {
   const [isLoading, setLoading] = useState(false);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     setLoading(true);
 
     try {
@@ -69,8 +69,8 @@ const Checkout = ({
   };
 
   const buildCartItemList = (cart, cakes) =>
-    cart.map((cartItem) => {
-      const cake = cakes.find((cake) => cake.id === cartItem.cakeId);
+    cart.map(cartItem => {
+      const cake = cakes.find(cake => cake.id === cartItem.cakeId);
       return (
         <StyledDetails key={cake.id}>
           <span>{cake.name}</span> * <span>{cartItem.amount}</span>
@@ -84,8 +84,8 @@ const Checkout = ({
         <StyledH1>Checkout</StyledH1>
 
         {isLoading && (
-          <Container className='d-flex justify-content-center'>
-            <Spinner animation='border' variant='primary' />
+          <Container className="d-flex justify-content-center">
+            <Spinner animation="border" variant="primary" />
           </Container>
         )}
 
@@ -114,7 +114,7 @@ const Checkout = ({
               .required('Pay Type is required')
               .test(
                 'Please select your payment type',
-                (value) => value !== 'default'
+                value => value !== 'default'
               ),
             cart: Yup.array(),
           })}
@@ -125,25 +125,25 @@ const Checkout = ({
               <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
                 <StyledLabel>Receiver</StyledLabel>
                 <Field
-                  className='form-control'
-                  type='text'
-                  name='receiver'
-                  placeholder='Please enter the receiver name'
+                  className="form-control"
+                  type="text"
+                  name="receiver"
+                  placeholder="Please enter the receiver name"
                 />
                 <StyledErrorFeedback>
-                  <ErrorMessage name='receiver' />
+                  <ErrorMessage name="receiver" />
                 </StyledErrorFeedback>
               </FormGroup>
               <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
                 <StyledLabel>Address</StyledLabel>
                 <Field
-                  className='form-control'
-                  type='text'
-                  name='address'
-                  placeholder='Please enter the address'
+                  className="form-control"
+                  type="text"
+                  name="address"
+                  placeholder="Please enter the address"
                 />
                 <StyledErrorFeedback>
-                  <ErrorMessage name='address' />
+                  <ErrorMessage name="address" />
                 </StyledErrorFeedback>
               </FormGroup>
               <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
@@ -158,8 +158,8 @@ const Checkout = ({
               </FormGroup>
               <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
                 <StyledLabel>Pay Type</StyledLabel>
-                <Field as='select' name='payType' className='form-control'>
-                  <option value='default'>
+                <Field as="select" name="payType" className="form-control">
+                  <option value="default">
                     --- Select your Payment Type ---
                   </option>
                   <option value={MASTER}>MASTER</option>
@@ -168,11 +168,11 @@ const Checkout = ({
                   <option value={ALIPAY}>ALIPAY</option>
                 </Field>
                 <StyledErrorFeedback>
-                  <ErrorMessage name='payType' />
+                  <ErrorMessage name="payType" />
                 </StyledErrorFeedback>
               </FormGroup>
-              <Row className='justify-content-center'>
-                <Button className='m-3' size='lg' type='submit'>
+              <Row className="justify-content-center">
+                <Button className="m-3" size="lg" type="submit">
                   Place the Order!
                 </Button>
               </Row>
@@ -184,7 +184,7 @@ const Checkout = ({
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { id, username, address } = state.user;
   const { cart } = state;
   const { cakes } = state.cake;

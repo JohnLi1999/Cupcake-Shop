@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import CakeDetailsImages from '../components/CakeDetails/CakeDetailsImages';
 import CakeDetailsDescription from '../components/CakeDetails/CakeDetailsDescription';
 import { isAuthenticated } from '../util/auth';
-import { filterByName } from '../util/cakes'
+import { filterByName } from '../util/cakes';
 import { addItemToTempCart } from '../util/tempCart';
 
 const CakeDetails = ({ cakes, history, match, addCakeToCart }) => {
@@ -19,51 +19,55 @@ const CakeDetails = ({ cakes, history, match, addCakeToCart }) => {
     setShowCover(true);
     setShowImg1(false);
     setShowImg2(false);
-  }
-  
+  };
+
   const displayImg1Handler = () => {
     setShowCover(false);
     setShowImg1(true);
     setShowImg2(false);
-  }
+  };
 
   const displayImg2Handler = () => {
     setShowCover(false);
     setShowImg1(false);
     setShowImg2(true);
-  }
+  };
 
-  const addToCartHandler = (cakeId) => {
+  const addToCartHandler = cakeId => {
     if (isAuthenticated()) {
       return addCakeToCart(cakeId, `/cakes/${match.params.name}`);
     }
     addItemToTempCart(cakeId);
     toast.success('Cake added!');
     return history.push(`/cakes/${match.params.name}`);
-  }
+  };
 
-  return <Container>{
-    filterByName(cakes, match.params.name).map((cake) => (
-      <Row key={cake.id}>
-        <CakeDetailsImages
-          cake={cake} 
-          showCover={showCover}
-          showImg1={showImg1}
-          showImg2={showImg2}
-          displayCover={displayCoverHandler}
-          displayImg1={displayImg1Handler}
-          displayImg2={displayImg2Handler} />
-        <CakeDetailsDescription
-          cake={cake}
-          history={history}
-          match={match}
-          addToCart={addToCartHandler}/>
-      </Row>
-    ))
-  }</Container>;
+  return (
+    <Container>
+      {filterByName(cakes, match.params.name).map(cake => (
+        <Row key={cake.id}>
+          <CakeDetailsImages
+            cake={cake}
+            showCover={showCover}
+            showImg1={showImg1}
+            showImg2={showImg2}
+            displayCover={displayCoverHandler}
+            displayImg1={displayImg1Handler}
+            displayImg2={displayImg2Handler}
+          />
+          <CakeDetailsDescription
+            cake={cake}
+            history={history}
+            match={match}
+            addToCart={addToCartHandler}
+          />
+        </Row>
+      ))}
+    </Container>
+  );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { cakes } = state.cake;
 
   return {

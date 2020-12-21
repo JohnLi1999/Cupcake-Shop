@@ -13,6 +13,6 @@ const StyledAlert = styled(Alert)`
   font-weight: 700;
 `;
 
-const Empty = ({ children }) => <StyledAlert>{children}</StyledAlert>
+const Empty = ({ children }) => <StyledAlert>{children}</StyledAlert>;
 
 export default Empty;
