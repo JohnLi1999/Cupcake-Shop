@@ -15,13 +15,15 @@ import {
   reduceCartItem,
   deleteCartItem,
 } from './api/cartService';
-import { getTempCart, clearTempCart } from './util/tempCart';
+import AuthenticatedRoute from './common/AuthenticatedRoute';
+import AdminRoute from './common/AdminRoute';
+import NotFound from './common/NotFound';
 import CakeList from './containers/CakeList';
 import Home from './containers/Home';
 import CakeDetails from './containers/CakeDetails';
+import Cart from './containers/Cart';
 
 import CustomNavbar from './components/CustomNavbar';
-import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import OrderList from './components/OrderList';
 import Profile from './components/Profile';
@@ -34,9 +36,7 @@ import AdminCategories from './components/admin/AdminCategories';
 import AdminCakes from './components/admin/cakes/AdminCakes';
 import AdminCakesOperations from './components/admin/cakes/AdminCakesOperations';
 import AdminOrders from './components/admin/AdminOrders';
-import AuthenticatedRoute from './common/AuthenticatedRoute';
-import AdminRoute from './common/AdminRoute';
-import NotFound from './common/NotFound';
+import { getTempCart, clearTempCart } from './util/tempCart';
 
 const FullWidthContainer = styled(Container)`
   margin: 0;

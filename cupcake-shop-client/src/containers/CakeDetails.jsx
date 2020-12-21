@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import CakeDetailsImages from '../components/CakeDetailsImages';
-import CakeDetailsDescription from '../components/CakeDetailsDescription';
+import CakeDetailsImages from '../components/CakeDetails/CakeDetailsImages';
+import CakeDetailsDescription from '../components/CakeDetails/CakeDetailsDescription';
 import { isAuthenticated } from '../util/auth';
 import { filterByName } from '../util/cakes'
 import { addItemToTempCart } from '../util/tempCart';
