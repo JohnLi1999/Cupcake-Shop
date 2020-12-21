@@ -24,8 +24,8 @@ import CakeDetails from './containers/CakeDetails';
 import Cart from './containers/Cart';
 import OrderList from './containers/OrderList';
 import Navbar from './containers/Navbar';
+import LogIn from './containers/LogIn';
 
-import LogIn from './components/LogIn';
 import Checkout from './components/Checkout';
 import Profile from './components/Profile';
 import SignUp from './components/SignUp';
