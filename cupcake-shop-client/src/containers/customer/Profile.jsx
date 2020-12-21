@@ -5,12 +5,12 @@ import { Container } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
-import CustomSpinner from '../common/UI/CustomSpinner';
-import Title from '../common/UI/Title';
-import UserInfoForm from '../components/User/UserInfoForm';
-import UserPasswordForm from '../components/User/UserPasswordForm';
-import * as actions from '../store/actions/index';
-import { updateUserInfo, updateUserPassword } from '../api/userService';
+import CustomSpinner from '../../common/UI/CustomSpinner';
+import Title from '../../common/UI/Title';
+import UserInfoForm from '../../components/customer/User/UserInfoForm';
+import UserPasswordForm from '../../components/customer/User/UserPasswordForm';
+import * as actions from '../../store/actions/index';
+import { updateUserInfo, updateUserPassword } from '../../api/userService';
 
 const Profile = ({ id, username, email, address, userUpdateInfo }) => {
   const [isLoading, setLoading] = useState(false);

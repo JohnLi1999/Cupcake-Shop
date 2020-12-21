@@ -4,18 +4,18 @@ import { Container, Button, Row } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import DividingLine from '../common/UI/DividingLine';
-import Empty from '../common/UI/Empty';
-import Title from '../common/UI/Title';
-import CartItem from '../components/Cart/CartItem';
-import { isAuthenticated } from '../util/auth';
-import { getSubtotalPrice } from '../util/cart';
+import DividingLine from '../../common/UI/DividingLine';
+import Empty from '../../common/UI/Empty';
+import Title from '../../common/UI/Title';
+import CartItem from '../../components/customer/Cart/CartItem';
+import { isAuthenticated } from '../../util/auth';
+import { getSubtotalPrice } from '../../util/cart';
 import {
   getTempCart,
   addItemToTempCart,
   reduceItemInTempCart,
   deleteItemFromTempCart,
-} from '../util/tempCart';
+} from '../../util/tempCart';
 
 const Cart = ({
   cart,

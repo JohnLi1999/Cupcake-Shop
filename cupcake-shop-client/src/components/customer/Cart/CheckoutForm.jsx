@@ -2,9 +2,9 @@ import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
 import { FormGroup, Button, Col, Row } from 'react-bootstrap';
 
-import ErrorFeedback from '../../common/UI/ErrorFeedback';
-import FormLabel from '../../common/UI/FormLabel';
-import { MASTER, VISA, WECHAT, ALIPAY } from '../../constants/constants';
+import ErrorFeedback from '../../../common/UI/ErrorFeedback';
+import FormLabel from '../../../common/UI/FormLabel';
+import { MASTER, VISA, WECHAT, ALIPAY } from '../../../constants/constants';
 
 const CheckoutForm = ({ totalPrice, totalAmount }) => (
   <Form>

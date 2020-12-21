@@ -7,8 +7,8 @@ import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 import NavItem from './NavItem';
 import NavDropDownItem from './NavDropdownItem';
-import brandingImage from '../../assets/branding.png';
-import '../../styles/CustomNavbar.css';
+import brandingImage from '../../../assets/branding.png';
+import '../../../styles/CustomNavbar.css';
 
 const CustomNavbar = ({
   categories,

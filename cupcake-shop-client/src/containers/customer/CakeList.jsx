@@ -4,11 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Title from '../common/UI/Title';
-import Cake from '../components/Cake/Cake';
-import { isAuthenticated } from '../util/auth';
-import { filterByCategory } from '../util/cakes';
-import { addItemToTempCart } from '../util/tempCart';
+import Title from '../../common/UI/Title';
+import Cake from '../../components/customer/Cake/Cake';
+import { isAuthenticated } from '../../util/auth';
+import { filterByCategory } from '../../util/cakes';
+import { addItemToTempCart } from '../../util/tempCart';
 
 const CakeList = ({ cakes, history, match, addCakeToCart }) => {
   const addToCartHandler = cake => {

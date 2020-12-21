@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import CustomSpinner from '../common/UI/CustomSpinner';
-import Title from '../common/UI/Title';
-import CartDetails from '../components/Cart/CartDetails';
-import CheckoutForm from '../components/Cart/CheckoutForm';
-import { addOrder } from '../api/orderService';
-import { getSubtotalAmount, getSubtotalPrice } from '../util/cart';
+import CustomSpinner from '../../common/UI/CustomSpinner';
+import Title from '../../common/UI/Title';
+import CartDetails from '../../components/customer/Cart/CartDetails';
+import CheckoutForm from '../../components/customer/Cart/CheckoutForm';
+import { addOrder } from '../../api/orderService';
+import { getSubtotalAmount, getSubtotalPrice } from '../../util/cart';
 
 const Checkout = ({ onCheckout, id, username, address, cart, cakes }) => {
   const [isLoading, setLoading] = useState(false);

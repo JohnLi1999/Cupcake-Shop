@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import { isAuthenticated, isAdmin } from '../util/auth';
-import { getSubtotalAmount } from '../util/cart';
-import { getTempCart } from '../util/tempCart';
-import CustomNavbar from '../components/Navbar/CustomNavbar';
+import CustomNavbar from '../../components/customer/Navbar/CustomNavbar';
+import { isAuthenticated, isAdmin } from '../../util/auth';
+import { getSubtotalAmount } from '../../util/cart';
+import { getTempCart } from '../../util/tempCart';
 
 const Navbar = ({ categories, cart, onLogOut, history }) => {
   const cartAmount = getSubtotalAmount(cart);

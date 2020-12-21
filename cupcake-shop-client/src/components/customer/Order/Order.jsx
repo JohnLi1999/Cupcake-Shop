@@ -4,7 +4,7 @@ import { Accordion, Card, Col } from 'react-bootstrap';
 
 import CakesTable from './CakesTable';
 import UserTable from './UserTable';
-import { PLACED, DELIVERED, FINISHED } from '../../constants/constants';
+import { PLACED, DELIVERED, FINISHED } from '../../../constants/constants';
 
 const StyledDiv = styled.div`
   cursor: pointer;

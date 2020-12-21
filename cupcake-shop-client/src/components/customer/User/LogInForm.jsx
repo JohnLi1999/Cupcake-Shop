@@ -3,8 +3,8 @@ import { Form, Field, ErrorMessage } from 'formik';
 import { FormGroup, Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import ErrorFeedback from '../../common/UI/ErrorFeedback';
-import FormLabel from '../../common/UI/FormLabel';
+import ErrorFeedback from '../../../common/UI/ErrorFeedback';
+import FormLabel from '../../../common/UI/FormLabel';
 
 const LogInForm = () => (
   <Form>

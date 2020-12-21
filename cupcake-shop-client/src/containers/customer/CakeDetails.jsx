@@ -4,11 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import CakeDetailsImages from '../components/Cake/CakeDetailsImages';
-import CakeDetailsDescription from '../components/Cake/CakeDetailsDescription';
-import { isAuthenticated } from '../util/auth';
-import { filterByName } from '../util/cakes';
-import { addItemToTempCart } from '../util/tempCart';
+import CakeDetailsImages from '../../components/customer/Cake/CakeDetailsImages';
+import CakeDetailsDescription from '../../components/customer/Cake/CakeDetailsDescription';
+import { isAuthenticated } from '../../util/auth';
+import { filterByName } from '../../util/cakes';
+import { addItemToTempCart } from '../../util/tempCart';
 
 const CakeDetails = ({ cakes, history, match, addCakeToCart }) => {
   const [showCover, setShowCover] = useState(true);

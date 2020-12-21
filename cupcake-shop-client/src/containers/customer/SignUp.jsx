@@ -5,10 +5,10 @@ import { Container } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import CustomSpinner from '../common/UI/CustomSpinner';
-import Title from '../common/UI/Title';
-import SignUpFrom from '../components/User/SignUpForm';
-import { signup } from '../api/authService';
+import CustomSpinner from '../../common/UI/CustomSpinner';
+import Title from '../../common/UI/Title';
+import SignUpFrom from '../../components/customer/User/SignUpForm';
+import { signup } from '../../api/authService';
 
 const SignUp = ({ history }) => {
   const [isLoading, setLoading] = useState(false);

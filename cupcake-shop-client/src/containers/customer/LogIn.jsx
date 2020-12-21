@@ -5,11 +5,11 @@ import { Container } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import CustomSpinner from '../common/UI/CustomSpinner';
-import Title from '../common/UI/Title';
-import LogInForm from '../components/User/LogInForm';
-import { login } from '../api/authService';
-import { AUTHENTICATION_TOKEN } from '../constants/constants';
+import CustomSpinner from '../../common/UI/CustomSpinner';
+import Title from '../../common/UI/Title';
+import LogInForm from '../../components/customer/User/LogInForm';
+import { login } from '../../api/authService';
+import { AUTHENTICATION_TOKEN } from '../../constants/constants';
 
 const LogIn = ({ onLogIn, location }) => {
   const [isLoading, setLoading] = useState(false);

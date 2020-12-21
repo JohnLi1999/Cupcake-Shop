@@ -5,12 +5,12 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Cake from '../components/Cake/Cake';
-import CustomCarousel from '../components/Cake/CustomCarousel';
-import { BEST_SELLING } from '../constants/constants';
-import { isAuthenticated } from '../util/auth';
-import { filterByTag } from '../util/cakes';
-import { addItemToTempCart } from '../util/tempCart';
+import Cake from '../../components/customer/Cake/Cake';
+import CustomCarousel from '../../components/customer/Cake/CustomCarousel';
+import { BEST_SELLING } from '../../constants/constants';
+import { isAuthenticated } from '../../util/auth';
+import { filterByTag } from '../../util/cakes';
+import { addItemToTempCart } from '../../util/tempCart';
 
 const FullWidthContainer = styled(Container)`
   margin: 0;

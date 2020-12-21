@@ -2,11 +2,11 @@ import React, { useEffect, useCallback } from 'react';
 import { Container, Accordion } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import Empty from '../common/UI/Empty';
-import Title from '../common/UI/Title';
-import Order from '../components/Order/Order';
-import { getOrders } from '../api/orderService';
-import * as actions from '../store/actions/index';
+import Empty from '../../common/UI/Empty';
+import Title from '../../common/UI/Title';
+import Order from '../../components/customer/Order/Order';
+import { getOrders } from '../../api/orderService';
+import * as actions from '../../store/actions/index';
 
 const OrderList = ({ userId, orders, loadOrderList }) => {
   const loadOrders = useCallback(async () => {
