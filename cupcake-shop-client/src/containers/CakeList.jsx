@@ -32,7 +32,7 @@ const CakeList = ({ cakes, history, match, addCakeToCart }) => {
       <StyledH1>{match.params.name.toUpperCase()}</StyledH1>
       <Row>{
         filterByCategory(cakes, match.params.name).map(cake => (
-          <Cake key={cake.id} cake={cake} history={history} addToCart={addToCartHandler} />
+          <Cake key={cake.id} cake={cake} addToCart={addToCartHandler} />
         ))
       }</Row>
     </Container>
