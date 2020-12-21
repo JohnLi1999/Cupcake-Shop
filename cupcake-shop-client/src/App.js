@@ -22,12 +22,12 @@ import CakeList from './containers/CakeList';
 import Home from './containers/Home';
 import CakeDetails from './containers/CakeDetails';
 import Cart from './containers/Cart';
+import OrderList from './containers/OrderList';
 
 import CustomNavbar from './components/CustomNavbar';
-import Checkout from './components/Checkout';
-import OrderList from './components/OrderList';
-import Profile from './components/Profile';
 import LogIn from './components/LogIn';
+import Checkout from './components/Checkout';
+import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 import AdminUsers from './components/admin/users/AdminUsers';
 import AdminUsersAdd from './components/admin/users/AdminUsersAdd';

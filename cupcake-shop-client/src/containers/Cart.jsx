@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Container, Button, Row, Alert } from 'react-bootstrap';
+import { Container, Button, Row } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import Empty from '../common/Empty';
 import CartItem from '../components/CartItem';
 import { isAuthenticated } from '../util/auth';
 import { getSubtotalPrice } from '../util/cart';
@@ -24,17 +25,6 @@ const StyledHr = styled.hr`
   border: 0;
   height: 2px;
   background-color: #ff80bf;
-`;
-
-const StyledAlert = styled(Alert)`
-  margin-top: 50px;
-  padding: 50px;
-  border-radius: 10px;
-  color: #0066ff;
-  background-color: #ffcc99;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 700;
 `;
 
 const Cart = ({
@@ -136,7 +126,7 @@ const Cart = ({
   return (
     <Container>
       {showEmptyMessage() ? (
-        <StyledAlert>Your Cart is Empty</StyledAlert>
+        <Empty>Your Cart is Empty</Empty>
       ) : (
         <>
           <StyledH1>Cart</StyledH1>
