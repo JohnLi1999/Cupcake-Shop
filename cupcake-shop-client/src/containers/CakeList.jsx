@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Cake from '../components/Cake';
+import Cake from '../components/Cake/Cake';
 import { isAuthenticated } from '../util/auth';
 import { filterByCategory } from '../util/cakes';
 import { addItemToTempCart } from '../util/tempCart';

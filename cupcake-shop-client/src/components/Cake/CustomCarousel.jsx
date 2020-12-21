@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Carousel, Button } from 'react-bootstrap';
 
-import { TODAY_SPECIAL } from '../constants/constants';
-import { filterByTag } from '../util/cakes';
+import { TODAY_SPECIAL } from '../../constants/constants';
+import { filterByTag } from '../../util/cakes';
 
 const StyledDiv = styled.div`
   background-color: pink;

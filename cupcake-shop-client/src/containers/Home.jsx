@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Cake from '../components/Cake';
-import CustomCarousel from '../components/CustomCarousel';
+import Cake from '../components/Cake/Cake';
+import CustomCarousel from '../components/Cake/CustomCarousel';
 import { BEST_SELLING } from '../constants/constants';
 import { isAuthenticated } from '../util/auth';
 import { filterByTag } from '../util/cakes';
