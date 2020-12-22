@@ -5,7 +5,7 @@ import OrdersTable from './OrdersTable';
 import FullWidthContainer from '../../../common/UI/FullWidthContainer';
 
 const OrdersTabs = ({ orders, keys, handleUpdate }) => (
-  <FullWidthContainer needBorder="yes">
+  <FullWidthContainer border="true">
     <Tabs defaultActiveKey="all">
       {keys.map(key => {
         if (typeof key === 'object') {

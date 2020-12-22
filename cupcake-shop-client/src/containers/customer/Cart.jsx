@@ -70,6 +70,7 @@ const Cart = ({
         const cake = cakes.find(cake => cake.id === cartItem.cakeId);
         return (
           <CartItem
+            key={cake.id}
             cake={cake}
             amount={cartItem.amount}
             history={history}

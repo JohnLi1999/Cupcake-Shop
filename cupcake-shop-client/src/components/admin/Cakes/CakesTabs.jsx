@@ -6,7 +6,7 @@ import CakesTable from '../../../components/admin/Cakes/CakesTable';
 
 const CakesTabs = ({ keys, cakes, addCake, updateCake }) => {
   return (
-    <FullWidthContainer needBorder="yes">
+    <FullWidthContainer border="true">
       <Row className="justify-content-end">
         <Button className="mt-2 mr-4" variant="info" onClick={addCake}>
           Add a new Cake
