@@ -31,10 +31,9 @@ import AdminCategories from './containers/admin/AdminCategories';
 import AdminOrders from './containers/admin/AdminOrders';
 import AdminCakes from './containers/admin/AdminCakes';
 import AdminCakesOperations from './containers/admin/AdminCakesOperations';
-
-import AdminUsers from './components/admin/users/AdminUsers';
-import AdminUsersAdd from './components/admin/users/AdminUsersAdd';
-import AdminUsersUpdate from './components/admin/users/AdminUsersUpdate';
+import AdminUsers from './containers/admin/AdminUsers';
+import AdminUsersAdd from './containers/admin/AdminUsersAdd';
+import AdminUsersUpdate from './containers/admin/AdminUsersUpdate';
 
 import { getTempCart, clearTempCart } from './util/tempCart';
 
