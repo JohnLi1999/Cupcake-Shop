@@ -14,14 +14,14 @@ import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
-import { upload } from '../../../api/uploadService';
-import { addCake, updateCake } from '../../../api/cakeService';
+import { upload } from '../../api/uploadService';
+import { addCake, updateCake } from '../../api/cakeService';
 import {
   TODAY_SPECIAL,
   BEST_SELLING,
   MAX_FILE_SIZE_IN_MB,
-} from '../../../constants/constants';
-import { bytesToMB, updateObject } from '../../../util/utility';
+} from '../../constants/constants';
+import { bytesToMB, updateObject } from '../../util/utility';
 
 const StyledH1 = styled.h1`
   text-align: center;
@@ -135,7 +135,9 @@ const AdminCakesOperations = ({
         </Button>
       </Row>
 
-      <StyledH1>Add a new Cake</StyledH1>
+      <StyledH1>
+        {location.state.update ? 'Update Cake' : 'Add a new Cake'}
+      </StyledH1>
 
       {isLoading && (
         <Container className="d-flex justify-content-center">

@@ -29,12 +29,12 @@ import Checkout from './containers/customer/Checkout';
 import Profile from './containers/customer/Profile';
 import AdminCategories from './containers/admin/AdminCategories';
 import AdminOrders from './containers/admin/AdminOrders';
+import AdminCakes from './containers/admin/AdminCakes';
+import AdminCakesOperations from './containers/admin/AdminCakesOperations';
 
 import AdminUsers from './components/admin/users/AdminUsers';
 import AdminUsersAdd from './components/admin/users/AdminUsersAdd';
 import AdminUsersUpdate from './components/admin/users/AdminUsersUpdate';
-import AdminCakes from './components/admin/cakes/AdminCakes';
-import AdminCakesOperations from './components/admin/cakes/AdminCakesOperations';
 
 import { getTempCart, clearTempCart } from './util/tempCart';
 
