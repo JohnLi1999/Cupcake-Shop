@@ -1,43 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  Container,
-  FormGroup,
-  Button,
-  Col,
-  Row,
-  Spinner,
-} from 'react-bootstrap';
-import styled from 'styled-components';
+import { Container, Button, Row } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
 import { upload } from '../../api/uploadService';
 import { addCake, updateCake } from '../../api/cakeService';
-import {
-  TODAY_SPECIAL,
-  BEST_SELLING,
-  MAX_FILE_SIZE_IN_MB,
-} from '../../constants/constants';
+import { MAX_FILE_SIZE_IN_MB } from '../../constants/constants';
 import { bytesToMB, updateObject } from '../../util/utility';
-
-const StyledH1 = styled.h1`
-  text-align: center;
-  margin: 25px;
-`;
-
-const StyledLabel = styled.label`
-  font-size: 18px;
-  font-weight: 500;
-  margin: 10px 2px;
-`;
-
-const StyledErrorFeedback = styled.div`
-  color: #ff0000;
-  margin: 0 5px;
-`;
+import CustomSpinner from '../../common/UI/CustomSpinner';
+import Title from '../../common/UI/Title';
+import CakesFrom from '../../components/admin/Cakes/CakesForm';
 
 const AdminCakesOperations = ({
   loadCakes,
@@ -127,6 +102,8 @@ const AdminCakesOperations = ({
     }
   };
 
+  const isUpdate = !!location.state.update;
+
   return (
     <Container>
       <Row className="justify-content-end m-3">
@@ -135,15 +112,9 @@ const AdminCakesOperations = ({
         </Button>
       </Row>
 
-      <StyledH1>
-        {location.state.update ? 'Update Cake' : 'Add a new Cake'}
-      </StyledH1>
+      <Title center>{isUpdate ? 'Update Cake' : 'Add a new Cake'}</Title>
 
-      {isLoading && (
-        <Container className="d-flex justify-content-center">
-          <Spinner animation="border" variant="primary" />
-        </Container>
-      )}
+      {isLoading && <CustomSpinner />}
 
       <Formik
         initialValues={{
@@ -185,152 +156,13 @@ const AdminCakesOperations = ({
         })}
         onSubmit={handleSubmit}>
         {({ setFieldValue }) => (
-          <Form>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>Name</StyledLabel>
-              <Field
-                className="form-control"
-                type="text"
-                name="name"
-                placeholder="Enter the name here"
-              />
-              <StyledErrorFeedback>
-                <ErrorMessage name="name" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>Description</StyledLabel>
-              <Field
-                className="form-control"
-                as="textarea"
-                name="description"
-                placeholder="Enter the description here"
-              />
-              <StyledErrorFeedback>
-                <ErrorMessage name="description" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>Price</StyledLabel>
-              <Field
-                className="form-control"
-                type="number"
-                name="price"
-                placeholder="Enter the price here"
-              />
-              <StyledErrorFeedback>
-                <ErrorMessage name="price" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>Stock</StyledLabel>
-              <Field
-                className="form-control"
-                type="number"
-                name="stock"
-                placeholder="Enter the stock here"
-              />
-              <StyledErrorFeedback>
-                <ErrorMessage name="stock" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>
-                Cover{' '}
-                {location.state.update && (
-                  <span>({cake.cover} as default)</span>
-                )}
-              </StyledLabel>
-              <Field
-                className="form-control-file"
-                type="file"
-                id="cover-image"
-                name="Cover"
-                onChange={event => handleChange(event, setFieldValue)}
-              />
-              <Field type="text" name="cover" hidden />
-              <StyledErrorFeedback>
-                <ErrorMessage name="cover" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>
-                Image 1
-                {location.state.update && <span>({cake.img1} as default)</span>}
-              </StyledLabel>
-              <Field
-                className="form-control-file"
-                type="file"
-                id="img1-image"
-                name="image1"
-                onChange={event => handleChange(event, setFieldValue)}
-              />
-              <Field type="text" name="img1" hidden />
-              <StyledErrorFeedback>
-                <ErrorMessage name="img1" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>
-                Image 2{' '}
-                {location.state.update && <span>({cake.img2} as default)</span>}
-              </StyledLabel>
-              <Field
-                className="form-control-file"
-                type="file"
-                id="img2-image"
-                name="image2"
-                onChange={event => handleChange(event, setFieldValue)}
-              />
-              <Field type="text" name="img2" hidden />
-              <StyledErrorFeedback>
-                <ErrorMessage name="img2" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>Category</StyledLabel>
-              <Field as="select" name="category" className="form-control">
-                <option value="default">--- Select a Category ---</option>
-                {categories.map(category => (
-                  <option key={category.name} value={category.name}>
-                    {category.name}
-                  </option>
-                ))}
-              </Field>
-              <StyledErrorFeedback>
-                <ErrorMessage name="category" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
-              <StyledLabel>Tags</StyledLabel>
-              <Col>
-                <Field
-                  className="form-check-inline"
-                  type="checkbox"
-                  name="tags"
-                  value={TODAY_SPECIAL}
-                />
-                Today's Special
-              </Col>
-              <Col>
-                <Field
-                  className="form-check-inline"
-                  type="checkbox"
-                  name="tags"
-                  value={BEST_SELLING}
-                />
-                Best Selling
-              </Col>
-              <StyledErrorFeedback>
-                <ErrorMessage name="tags" />
-              </StyledErrorFeedback>
-            </FormGroup>
-            <Row className="justify-content-center">
-              <Button className="m-3" size="lg" type="submit">
-                {location.state.update ? 'Update' : 'Add'}
-              </Button>
-            </Row>
-          </Form>
+          <CakesFrom
+            cake={cake}
+            categories={categories}
+            isUpdate={isUpdate}
+            handleChange={handleChange}
+            setFieldValue={setFieldValue}
+          />
         )}
       </Formik>
     </Container>
