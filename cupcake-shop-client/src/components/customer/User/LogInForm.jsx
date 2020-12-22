@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 
 import ErrorFeedback from '../../../common/UI/ErrorFeedback';
 import FormLabel from '../../../common/UI/FormLabel';
+import {
+  USERNAME_EMAIL_PLACEHOLDER,
+  PASSWORD_PLACEHOLDER,
+} from '../../../constants/en';
 
 const LogInForm = () => (
   <Form>
@@ -14,7 +18,7 @@ const LogInForm = () => (
         className="form-control"
         type="text"
         name="usernameOrEmail"
-        placeholder="Please enter your username or email"
+        placeholder={USERNAME_EMAIL_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="usernameOrEmail" />
@@ -26,7 +30,7 @@ const LogInForm = () => (
         className="form-control"
         type="password"
         name="password"
-        placeholder="Please enter your password"
+        placeholder={PASSWORD_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="password" />

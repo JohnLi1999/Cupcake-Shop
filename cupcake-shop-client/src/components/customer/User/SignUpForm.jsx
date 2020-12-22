@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom';
 
 import ErrorFeedback from '../../../common/UI/ErrorFeedback';
 import FormLabel from '../../../common/UI/FormLabel';
+import {
+  USERNAME_PLACEHOLDER,
+  EMAIL_PLACEHOLDER,
+  PASSWORD_PLACEHOLDER,
+  CONFIRM_PASSWORD_PLACEHOLDER,
+  ADDRESS_PLACEHOLDER,
+} from '../../../constants/en';
 
 const SignUpForm = () => (
   <Form>
@@ -14,7 +21,7 @@ const SignUpForm = () => (
         className="form-control"
         type="text"
         name="username"
-        placeholder="Please enter your username"
+        placeholder={USERNAME_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="username" />
@@ -26,7 +33,7 @@ const SignUpForm = () => (
         className="form-control"
         type="text"
         name="email"
-        placeholder="Please enter your email"
+        placeholder={EMAIL_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="email" />
@@ -38,7 +45,7 @@ const SignUpForm = () => (
         className="form-control"
         type="password"
         name="password"
-        placeholder="Please enter your password"
+        placeholder={PASSWORD_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="password" />
@@ -50,7 +57,7 @@ const SignUpForm = () => (
         className="form-control"
         type="password"
         name="confirm_password"
-        placeholder="Please confirm your password"
+        placeholder={CONFIRM_PASSWORD_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="confirm_password" />
@@ -62,7 +69,7 @@ const SignUpForm = () => (
         className="form-control"
         type="text"
         name="address"
-        placeholder="Please enter your address"
+        placeholder={ADDRESS_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="address" />

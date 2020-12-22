@@ -10,6 +10,12 @@ import Title from '../../common/UI/Title';
 import LogInForm from '../../components/customer/User/LogInForm';
 import { login } from '../../api/authService';
 import { AUTHENTICATION_TOKEN } from '../../constants/constants';
+import {
+  LOGIN_FAILURE_MESSAGE,
+  LOGIN_SUCCESS_MESSAGE,
+  USERNAME_EMAIL_REQUIRED,
+  PASSWORD_REQUIRED,
+} from '../../constants/en';
 
 const LogIn = ({ onLogIn, location }) => {
   const [isLoading, setLoading] = useState(false);
@@ -22,7 +28,7 @@ const LogIn = ({ onLogIn, location }) => {
 
     try {
       const response = await login(logInRequest);
-      toast.success('Log In Successfully!');
+      toast.success(LOGIN_SUCCESS_MESSAGE);
 
       const { jwtToken, tokenType } = response.data;
       localStorage.setItem(AUTHENTICATION_TOKEN, `${tokenType} ${jwtToken}`);
@@ -35,12 +41,9 @@ const LogIn = ({ onLogIn, location }) => {
         onLogIn();
       }
     } catch {
-      toast.error(
-        'Your Username / Email or Password is incorrect. Please try again',
-        {
-          autoClose: 2000,
-        }
-      );
+      toast.error(LOGIN_FAILURE_MESSAGE, {
+        autoClose: 2000,
+      });
       setLoading(false);
     }
   };
@@ -57,10 +60,8 @@ const LogIn = ({ onLogIn, location }) => {
           password: '',
         }}
         validationSchema={Yup.object().shape({
-          usernameOrEmail: Yup.string().required(
-            'Username or Email is required'
-          ),
-          password: Yup.string().required('Password is required'),
+          usernameOrEmail: Yup.string().required(USERNAME_EMAIL_REQUIRED),
+          password: Yup.string().required(PASSWORD_REQUIRED),
         })}
         onSubmit={handleSubmit}>
         {() => <LogInForm />}
