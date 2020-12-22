@@ -34,7 +34,6 @@ import AdminCakesOperations from './containers/admin/AdminCakesOperations';
 import AdminUsers from './containers/admin/AdminUsers';
 import AdminUsersAdd from './containers/admin/AdminUsersAdd';
 import AdminUsersUpdate from './containers/admin/AdminUsersUpdate';
-
 import { getTempCart, clearTempCart } from './util/tempCart';
 
 const App = ({
