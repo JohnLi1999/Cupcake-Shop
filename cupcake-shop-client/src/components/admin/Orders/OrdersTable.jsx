@@ -3,7 +3,6 @@ import { Table, Button } from 'react-bootstrap';
 
 import OrderStatus from '../../../common/UI/OrderStatus';
 import { PLACED, DELIVERED, FINISHED } from '../../../constants/constants';
-
 import { filterByCondition } from '../../../util/utility';
 
 const OrdersTable = ({ orders, targetStatus, handleUpdate }) => (

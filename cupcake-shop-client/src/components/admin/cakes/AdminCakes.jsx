@@ -81,7 +81,7 @@ const AdminCakes = ({ loadCakes, cakes, history }) => {
   );
 
   return (
-    <FullWidthContainer needMargin>
+    <FullWidthContainer needBorder="yes">
       <Row className="justify-content-end">
         <Button
           className="mt-2 mr-4"

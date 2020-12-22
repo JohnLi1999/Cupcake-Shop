@@ -5,18 +5,18 @@ import OrdersTable from './OrdersTable';
 import FullWidthContainer from '../../../common/UI/FullWidthContainer';
 
 const OrdersTabs = ({ orders, keys, handleUpdate }) => (
-  <FullWidthContainer needMargin="true">
+  <FullWidthContainer needBorder="yes">
     <Tabs defaultActiveKey="all">
       {keys.map(key => {
         if (typeof key === 'object') {
           return (
-            <Tab eventKey={key.eventKey} title={key.title}>
+            <Tab key={key.eventKey} eventKey={key.eventKey} title={key.title}>
               <OrdersTable orders={orders} handleUpdate={handleUpdate} />
             </Tab>
           );
         } else {
           return (
-            <Tab eventKey={key} title={key}>
+            <Tab key={key} eventKey={key} title={key}>
               <OrdersTable
                 orders={orders}
                 targetStatus={key}
