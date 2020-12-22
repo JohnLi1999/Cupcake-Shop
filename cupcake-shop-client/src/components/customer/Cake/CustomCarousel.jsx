@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container, Carousel, Button } from 'react-bootstrap';
 
 import { TODAY_SPECIAL } from '../../../constants/constants';
-import { filterByTag } from '../../../util/cakes';
+import { filterByCondition } from '../../../util/utility';
 
 const StyledDiv = styled.div`
   background-color: pink;
@@ -49,7 +49,7 @@ const CustomCarousel = ({ cakes, checkCart, checkCake }) => (
         </StyledButton>
       </Carousel.Caption>
     </Carousel.Item>
-    {filterByTag(cakes, TODAY_SPECIAL).map(cake => (
+    {filterByCondition('array', cakes, 'tags', TODAY_SPECIAL).map(cake => (
       <Carousel.Item key={cake.id}>
         <StyledDiv></StyledDiv>
         <Carousel.Caption>

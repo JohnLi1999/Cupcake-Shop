@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import CakeDetailsImages from '../../components/customer/Cake/CakeDetailsImages';
 import CakeDetailsDescription from '../../components/customer/Cake/CakeDetailsDescription';
 import { isAuthenticated } from '../../util/auth';
-import { filterByName } from '../../util/cakes';
+import { filterByCondition } from '../../util/utility';
 import { addItemToTempCart } from '../../util/tempCart';
 
 const CakeDetails = ({ cakes, history, match, addCakeToCart }) => {
@@ -44,25 +44,27 @@ const CakeDetails = ({ cakes, history, match, addCakeToCart }) => {
 
   return (
     <Container>
-      {filterByName(cakes, match.params.name).map(cake => (
-        <Row key={cake.id}>
-          <CakeDetailsImages
-            cake={cake}
-            showCover={showCover}
-            showImg1={showImg1}
-            showImg2={showImg2}
-            displayCover={displayCoverHandler}
-            displayImg1={displayImg1Handler}
-            displayImg2={displayImg2Handler}
-          />
-          <CakeDetailsDescription
-            cake={cake}
-            history={history}
-            match={match}
-            addToCart={addToCartHandler}
-          />
-        </Row>
-      ))}
+      {filterByCondition('object', cakes, 'name', match.params.name).map(
+        cake => (
+          <Row key={cake.id}>
+            <CakeDetailsImages
+              cake={cake}
+              showCover={showCover}
+              showImg1={showImg1}
+              showImg2={showImg2}
+              displayCover={displayCoverHandler}
+              displayImg1={displayImg1Handler}
+              displayImg2={displayImg2Handler}
+            />
+            <CakeDetailsDescription
+              cake={cake}
+              history={history}
+              match={match}
+              addToCart={addToCartHandler}
+            />
+          </Row>
+        )
+      )}
     </Container>
   );
 };

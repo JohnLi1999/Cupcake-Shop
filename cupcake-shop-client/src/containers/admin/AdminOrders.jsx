@@ -1,18 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
-import styled from 'styled-components';
-import { Table, Button, Tabs, Tab } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import FullWidthContainer from '../../common/UI/FullWidthContainer';
+import OrdersTabs from '../../components/admin/Orders/OrdersTabs';
 import { getAllOrders, updateOrderStatus } from '../../api/orderService';
 import { PLACED, DELIVERED, FINISHED } from '../../constants/constants';
 import * as actions from '../../store/actions/index';
-
-const StyledOrderStatus = styled.div`
-  color: ${props => props.color};
-`;
 
 const AdminOrders = ({
   orders,
@@ -46,108 +40,14 @@ const AdminOrders = ({
     }
   };
 
-  const orderStatus = status => {
-    if (status === PLACED) {
-      return <StyledOrderStatus color="#33cc33">{status}</StyledOrderStatus>;
-    } else if (status === DELIVERED) {
-      return <StyledOrderStatus color="#0000ff">{status}</StyledOrderStatus>;
-    } else {
-      return <StyledOrderStatus color="#000000">{status}</StyledOrderStatus>;
-    }
-  };
+  const keys = [
+    { eventKey: 'all', title: 'All ORDERS' },
+    PLACED,
+    DELIVERED,
+    FINISHED,
+  ];
 
-  const getTargetOrderList = (orderList, targetStatus) =>
-    targetStatus
-      ? orders.filter(order => order.orderStatus === targetStatus)
-      : orderList;
-
-  const buildOrderList = targetStatus => (
-    <Table striped bordered hover responsive className="text-center mt-2">
-      <thead className="thead-dark">
-        <tr>
-          <th width="5%">ID</th>
-          <th width="7%">USER</th>
-          <th width="5%">ORDER STATUS</th>
-          <th width="5%">RECEIVER</th>
-          <th>DELIVERY ADDRESS</th>
-          <th>DETAILS</th>
-          <th width="5%">TOTAL PRICE ($)</th>
-          <th width="5%">TOTAL AMOUNT</th>
-          <th width="5%">PAY TYPE</th>
-          <th width="5%">CREATED AT</th>
-          <th width="5%">UPDATED AT</th>
-          <th width="10%">OPERATIONS</th>
-        </tr>
-      </thead>
-      <tbody>
-        {getTargetOrderList(orders, targetStatus).map(order => (
-          <tr key={order.id}>
-            <td>{order.id}</td>
-            <td>{order.username}</td>
-            <td>{orderStatus(order.orderStatus)}</td>
-            <td>{order.receiver}</td>
-            <td>{order.address}</td>
-            <td>
-              {order.orderItemList.map(orderItem => (
-                <div key={orderItem.cakeName}>
-                  {orderItem.cakeName} ({orderItem.price}) * {orderItem.amount}
-                </div>
-              ))}
-            </td>
-            <td>{order.totalPrice}</td>
-            <td>{order.totalAmount}</td>
-            <td>{order.payType}</td>
-            <td>{order.createdAt}</td>
-            <td>{order.updatedAt}</td>
-            <td>
-              {order.orderStatus === PLACED && (
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    handleUpdate(order.id, DELIVERED);
-                  }}>
-                  DELIVER
-                </Button>
-              )}
-              {order.orderStatus === DELIVERED && (
-                <Button
-                  variant="success"
-                  onClick={() => {
-                    handleUpdate(order.id, FINISHED);
-                  }}>
-                  FINISH
-                </Button>
-              )}
-              {order.orderStatus === FINISHED && (
-                <Button variant="secondary" disabled>
-                  NO OPERATION
-                </Button>
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
-  );
-
-  return (
-    <FullWidthContainer needMargin>
-      <Tabs defaultActiveKey="all">
-        <Tab eventKey="all" title="All ORDERS">
-          {buildOrderList()}
-        </Tab>
-        <Tab eventKey={PLACED} title={PLACED}>
-          {buildOrderList(PLACED)}
-        </Tab>
-        <Tab eventKey={DELIVERED} title={DELIVERED}>
-          {buildOrderList(DELIVERED)}
-        </Tab>
-        <Tab eventKey={FINISHED} title={FINISHED}>
-          {buildOrderList(FINISHED)}
-        </Tab>
-      </Tabs>
-    </FullWidthContainer>
-  );
+  return <OrdersTabs orders={orders} keys={keys} handleUpdate={handleUpdate} />;
 };
 
 const mapStateToProps = state => {

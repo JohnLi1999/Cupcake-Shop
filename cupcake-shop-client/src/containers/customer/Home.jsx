@@ -9,7 +9,7 @@ import Cake from '../../components/customer/Cake/Cake';
 import CustomCarousel from '../../components/customer/Cake/CustomCarousel';
 import { BEST_SELLING } from '../../constants/constants';
 import { isAuthenticated } from '../../util/auth';
-import { filterByTag } from '../../util/cakes';
+import { filterByCondition } from '../../util/utility';
 import { addItemToTempCart } from '../../util/tempCart';
 
 const Home = ({ cakes, history, addCakeToCart }) => {
@@ -39,7 +39,7 @@ const Home = ({ cakes, history, addCakeToCart }) => {
           Best Selling
         </Alert>
         <Row>
-          {filterByTag(cakes, BEST_SELLING).map(cake => (
+          {filterByCondition('array', cakes, 'tags', BEST_SELLING).map(cake => (
             <Cake key={cake.id} cake={cake} addToCart={addToCartHandler} />
           ))}
         </Row>

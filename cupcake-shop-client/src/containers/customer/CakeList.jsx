@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import Title from '../../common/UI/Title';
 import Cake from '../../components/customer/Cake/Cake';
 import { isAuthenticated } from '../../util/auth';
-import { filterByCategory } from '../../util/cakes';
+import { filterByCondition } from '../../util/utility';
 import { addItemToTempCart } from '../../util/tempCart';
 
 const CakeList = ({ cakes, history, match, addCakeToCart }) => {
@@ -24,9 +24,11 @@ const CakeList = ({ cakes, history, match, addCakeToCart }) => {
     <Container>
       <Title>{match.params.name.toUpperCase()}</Title>
       <Row>
-        {filterByCategory(cakes, match.params.name).map(cake => (
-          <Cake key={cake.id} cake={cake} addToCart={addToCartHandler} />
-        ))}
+        {filterByCondition('object', cakes, 'category', match.params.name).map(
+          cake => (
+            <Cake key={cake.id} cake={cake} addToCart={addToCartHandler} />
+          )
+        )}
       </Row>
     </Container>
   );
