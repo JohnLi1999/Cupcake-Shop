@@ -10,6 +10,27 @@ import { ROLE_USER } from '../../constants/constants';
 import CustomSpinner from '../../common/UI/CustomSpinner';
 import Title from '../../common/UI/Title';
 import UsersAddForm from '../../components/admin/Users/UsersAddForm';
+import {
+  USERNAME_MIN_LENGTH,
+  USERNAME_MAX_LENGTH,
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_MAX_LENGTH,
+  ADDRESS_MAX_LENGTH,
+} from '../../constants/constants';
+import {
+  USERNAME_REQUIRED,
+  USERNAME_MIN_MESSAGE,
+  USERNAME_MAX_MESSAGE,
+  EMAIL_REQUIRED,
+  EMAIL_INVALID,
+  PASSWORD_REQUIRED,
+  PASSWORD_MIN_MESSAGE,
+  PASSWORD_MAX_MESSAGE,
+  CONFIRM_PASSWORD_REQUIRED,
+  CONFIRM_PASSWORD_MISMATCH,
+  ADDRESS_REQUIRED,
+  ADDRESS_MAX_MESSAGE,
+} from '../../constants/en';
 
 const AdminUsersAdd = ({ history }) => {
   const [isLoading, setLoading] = useState(false);
@@ -59,22 +80,20 @@ const AdminUsersAdd = ({ history }) => {
         enableReinitialize
         validationSchema={Yup.object().shape({
           username: Yup.string()
-            .required('Username is required')
-            .min(3, 'Username should have 3 characters or more')
-            .max(40, 'Username should have 40 characters or less'),
-          email: Yup.string()
-            .required('Email is required')
-            .email('Email is invalid'),
+            .required(USERNAME_REQUIRED)
+            .min(USERNAME_MIN_LENGTH, USERNAME_MIN_MESSAGE)
+            .max(USERNAME_MAX_LENGTH, USERNAME_MAX_MESSAGE),
+          email: Yup.string().required(EMAIL_REQUIRED).email(EMAIL_INVALID),
           password: Yup.string()
-            .required('Password is required')
-            .min(6, 'Password should have 6 characters or more')
-            .max(100, 'Password should have 100 characters or less'),
+            .required(PASSWORD_REQUIRED)
+            .min(PASSWORD_MIN_LENGTH, PASSWORD_MIN_MESSAGE)
+            .max(PASSWORD_MAX_LENGTH, PASSWORD_MAX_MESSAGE),
           confirm_password: Yup.string()
-            .required('Confirm Password is required')
-            .oneOf([Yup.ref('password')], 'Two passwords must match'),
+            .required(CONFIRM_PASSWORD_REQUIRED)
+            .oneOf([Yup.ref('password')], CONFIRM_PASSWORD_MISMATCH),
           address: Yup.string()
-            .required('Address is required')
-            .max(200, 'Address should have 200 characters or less'),
+            .required(ADDRESS_REQUIRED)
+            .max(ADDRESS_MAX_LENGTH, ADDRESS_MAX_MESSAGE),
           roles: Yup.array(),
         })}
         onSubmit={handleSubmit}>

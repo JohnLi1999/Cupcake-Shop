@@ -5,6 +5,13 @@ import { FormGroup, Button, Col, Row } from 'react-bootstrap';
 import { ROLE_USER, ROLE_ADMIN } from '../../../constants/constants';
 import ErrorFeedback from '../../../common/UI/ErrorFeedback';
 import FormLabel from '../../../common/UI/FormLabel';
+import {
+  USERNAME_PLACEHOLDER,
+  EMAIL_PLACEHOLDER,
+  PASSWORD_PLACEHOLDER,
+  CONFIRM_PASSWORD_PLACEHOLDER,
+  ADDRESS_PLACEHOLDER,
+} from '../../../constants/en';
 
 const UsersAddForm = () => (
   <Form>
@@ -14,7 +21,7 @@ const UsersAddForm = () => (
         className="form-control"
         type="text"
         name="username"
-        placeholder="Enter the username here"
+        placeholder={USERNAME_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="username" />
@@ -26,7 +33,7 @@ const UsersAddForm = () => (
         className="form-control"
         type="text"
         name="email"
-        placeholder="Enter the email here"
+        placeholder={EMAIL_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="email" />
@@ -38,7 +45,7 @@ const UsersAddForm = () => (
         className="form-control"
         type="password"
         name="password"
-        placeholder="Enter the password here"
+        placeholder={PASSWORD_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="password" />
@@ -50,7 +57,7 @@ const UsersAddForm = () => (
         className="form-control"
         type="password"
         name="confirm_password"
-        placeholder="Confirm the password again"
+        placeholder={CONFIRM_PASSWORD_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="confirm_password" />
@@ -62,7 +69,7 @@ const UsersAddForm = () => (
         className="form-control"
         type="text"
         name="address"
-        placeholder="Enter the address here"
+        placeholder={ADDRESS_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="address" />

@@ -12,6 +12,18 @@ import CartDetails from '../../components/customer/Cart/CartDetails';
 import CheckoutForm from '../../components/customer/Cart/CheckoutForm';
 import { addOrder } from '../../api/orderService';
 import { getSubtotalAmount, getSubtotalPrice } from '../../util/cart';
+import {
+  USERNAME_MAX_LENGTH,
+  ADDRESS_MAX_LENGTH,
+} from '../../constants/constants';
+import {
+  RECEIVER_REQUIRED,
+  RECEIVER_MAX_MESSAGE,
+  ADDRESS_REQUIRED,
+  ADDRESS_MAX_MESSAGE,
+  PAY_TYPE_REQUIRED,
+  PAY_TYPE_TEST,
+} from '../../constants/en';
 
 const Checkout = ({ onCheckout, id, username, address, cart, cakes }) => {
   const [isLoading, setLoading] = useState(false);
@@ -55,19 +67,16 @@ const Checkout = ({ onCheckout, id, username, address, cart, cakes }) => {
           }}
           validationSchema={Yup.object().shape({
             receiver: Yup.string()
-              .required('Receiver is required')
-              .max(40, 'Username should have 40 characters or less'),
+              .required(RECEIVER_REQUIRED)
+              .max(USERNAME_MAX_LENGTH, RECEIVER_MAX_MESSAGE),
             address: Yup.string()
-              .required('Receiver is required')
-              .max(200, 'Username should have 200 characters or less'),
+              .required(ADDRESS_REQUIRED)
+              .max(ADDRESS_MAX_LENGTH, ADDRESS_MAX_MESSAGE),
             totalPrice: Yup.number(),
             totalAmount: Yup.number(),
             payType: Yup.string()
-              .required('Pay Type is required')
-              .test(
-                'Please select your payment type',
-                value => value !== 'default'
-              ),
+              .required(PAY_TYPE_REQUIRED)
+              .test(PAY_TYPE_TEST, value => value !== 'default'),
             cart: Yup.array(),
           })}
           onSubmit={handleSubmit}

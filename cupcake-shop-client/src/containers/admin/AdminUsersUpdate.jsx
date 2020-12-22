@@ -11,6 +11,25 @@ import CustomSpinner from '../../common/UI/CustomSpinner';
 import Title from '../../common/UI/Title';
 import UsersInfoUpdateForm from '../../components/admin/Users/UsersInfoUpdateForm';
 import UsersPasswordUpdateForm from '../../components/admin/Users/UsersPasswordUpdateForm';
+import {
+  USERNAME_MIN_LENGTH,
+  USERNAME_MAX_LENGTH,
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_MAX_LENGTH,
+  ADDRESS_MAX_LENGTH,
+} from '../../constants/constants';
+import {
+  USERNAME_REQUIRED,
+  USERNAME_MIN_MESSAGE,
+  USERNAME_MAX_MESSAGE,
+  EMAIL_REQUIRED,
+  EMAIL_INVALID,
+  ADDRESS_REQUIRED,
+  ADDRESS_MAX_MESSAGE,
+  NEW_PASSWORD_REQUIRED,
+  NEW_PASSWORD_MIN_MESSAGE,
+  NEW_PASSWORD_MAX_MESSAGE,
+} from '../../constants/en';
 
 const AdminUsersUpdate = ({ users, history, location }) => {
   const [user, setUser] = useState({ username: '', email: '', address: '' });
@@ -78,15 +97,13 @@ const AdminUsersUpdate = ({ users, history, location }) => {
         enableReinitialize
         validationSchema={Yup.object().shape({
           username: Yup.string()
-            .required('Username is required')
-            .min(3, 'Username should have 3 characters or more')
-            .max(40, 'Username should have 40 characters or less'),
-          email: Yup.string()
-            .required('Email is required')
-            .email('Email is invalid'),
+            .required(USERNAME_REQUIRED)
+            .min(USERNAME_MIN_LENGTH, USERNAME_MIN_MESSAGE)
+            .max(USERNAME_MAX_LENGTH, USERNAME_MAX_MESSAGE),
+          email: Yup.string().required(EMAIL_REQUIRED).email(EMAIL_INVALID),
           address: Yup.string()
-            .required('Address is required')
-            .max(200, 'Address should have 200 characters or less'),
+            .required(ADDRESS_REQUIRED)
+            .max(ADDRESS_MAX_LENGTH, ADDRESS_MAX_MESSAGE),
         })}
         onSubmit={handleSubmitInfo}>
         {() => <UsersInfoUpdateForm />}
@@ -98,9 +115,9 @@ const AdminUsersUpdate = ({ users, history, location }) => {
         }}
         validationSchema={Yup.object().shape({
           newPassword: Yup.string()
-            .required('New Password is required')
-            .min(6, 'New Password should have 6 characters or more')
-            .max(100, 'New Password should have 100 characters or less'),
+            .required(NEW_PASSWORD_REQUIRED)
+            .min(PASSWORD_MIN_LENGTH, NEW_PASSWORD_MIN_MESSAGE)
+            .max(PASSWORD_MAX_LENGTH, NEW_PASSWORD_MAX_MESSAGE),
         })}
         onSubmit={handleSubmitPassword}>
         {() => <UsersPasswordUpdateForm />}

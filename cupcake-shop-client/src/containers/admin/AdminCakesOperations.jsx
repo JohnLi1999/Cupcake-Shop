@@ -13,6 +13,33 @@ import { bytesToMB, updateObject } from '../../util/utility';
 import CustomSpinner from '../../common/UI/CustomSpinner';
 import Title from '../../common/UI/Title';
 import CakesFrom from '../../components/admin/Cakes/CakesForm';
+import {
+  CAKE_NAME_MIN_LENGTH,
+  CAKE_NAME_MAX_LENGTH,
+  CAKE_MIN_PRICE,
+  CAKE_MAX_PRICE,
+  CAKE_MIN_STOCK,
+  CAKE_MAX_STOCK,
+} from '../../constants/constants';
+import {
+  IMAGE_SIZE_TOO_LARGE,
+  CAKE_NAME_REQUIRED,
+  CAKE_NAME_MIN_MESSAGE,
+  CAKE_NAME_MAX_MESSAGE,
+  CAKE_DESCRIPTION_REQUIRED,
+  CAKE_PRICE_TEST,
+  CAKE_PRICE_REQUIRED,
+  CAKE_PRICE_MIN_MESSAGE,
+  CAKE_PRICE_MAX_MESSAGE,
+  CAKE_STOCK_REQUIRED,
+  CAKE_STOCK_MIN_MESSAGE,
+  CAKE_STOCK_MAX_MESSAGE,
+  CAKE_COVER_REQUIRED,
+  CAKE_IMAGE1_REQUIRED,
+  CAKE_IMAGE2_REQUIRED,
+  CAKE_CATEGORY_REQUIRED,
+  CAKE_CATEGORY_TEST,
+} from '../../constants/en';
 
 const AdminCakesOperations = ({
   loadCakes,
@@ -76,7 +103,7 @@ const AdminCakesOperations = ({
   const handleChange = async (event, setFieldValue) => {
     const file = event.target.files[0];
     if (!!file && bytesToMB(file.size) > MAX_FILE_SIZE_IN_MB) {
-      toast.error('Image size is too large. Please change to another one!', {
+      toast.error(IMAGE_SIZE_TOO_LARGE, {
         autoClose: 2000,
       });
       return;
@@ -133,27 +160,27 @@ const AdminCakesOperations = ({
         enableReinitialize
         validationSchema={Yup.object().shape({
           name: Yup.string()
-            .required('Name is required')
-            .min(3, 'Name should have 3 characters or more')
-            .max(150, 'Username should have 150 characters or less'),
-          description: Yup.string().required('Description is required'),
+            .required(CAKE_NAME_REQUIRED)
+            .min(CAKE_NAME_MIN_LENGTH, CAKE_NAME_MIN_MESSAGE)
+            .max(CAKE_NAME_MAX_LENGTH, CAKE_NAME_MAX_MESSAGE),
+          description: Yup.string().required(CAKE_DESCRIPTION_REQUIRED),
           price: Yup.number()
-            .test('only two decimals are allowed', value =>
+            .test(CAKE_PRICE_TEST, value =>
               (value + '').match(/^([0-9]+[.]?[0-9]?[0-9]?|[0-9]+)$/)
             )
-            .required('Price is required')
-            .min(1, 'Price for a cake should be at least $1')
-            .max(500, 'Price for a cake should be at most $500'),
+            .required(CAKE_PRICE_REQUIRED)
+            .min(CAKE_MIN_PRICE, CAKE_PRICE_MIN_MESSAGE)
+            .max(CAKE_MAX_PRICE, CAKE_PRICE_MAX_MESSAGE),
           stock: Yup.number()
-            .required('Stock is required')
-            .min(0, 'Stock cannot be a negative number')
-            .max(10000, 'Stock should be at most 10000'),
-          cover: Yup.string().required('Cover is required'),
-          img1: Yup.string().required('Image 1 is required'),
-          img2: Yup.string().required('Image 2 is required'),
+            .required(CAKE_STOCK_REQUIRED)
+            .min(CAKE_MIN_STOCK, CAKE_STOCK_MIN_MESSAGE)
+            .max(CAKE_MAX_STOCK, CAKE_STOCK_MAX_MESSAGE),
+          cover: Yup.string().required(CAKE_COVER_REQUIRED),
+          img1: Yup.string().required(CAKE_IMAGE1_REQUIRED),
+          img2: Yup.string().required(CAKE_IMAGE2_REQUIRED),
           category: Yup.string()
-            .required('Category is required')
-            .test('Please select a category', value => value !== 'default'),
+            .required(CAKE_CATEGORY_REQUIRED)
+            .test(CAKE_CATEGORY_TEST, value => value !== 'default'),
           tags: Yup.array(),
         })}
         onSubmit={handleSubmit}>

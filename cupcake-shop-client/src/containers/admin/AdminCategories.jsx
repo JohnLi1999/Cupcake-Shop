@@ -9,6 +9,15 @@ import CustomSpinner from '../../common/UI/CustomSpinner';
 import CategoryForm from '../../components/admin/Categories/CategoriesForm';
 import CategoryTable from '../../components/admin/Categories/CategoriesTable';
 import { addCategory } from '../../api/categoryService';
+import {
+  CATEGORY_MIN_LENGTH,
+  CATEGORY_MAX_LENGTH,
+} from '../../constants/constants';
+import {
+  CATEGORY_REQUIRED,
+  CATEGORY_MIN_MESSAGE,
+  CATEGORY_MAX_MESSAGE,
+} from '../../constants/en';
 
 const AdminCategories = ({ categories, loadCategories }) => {
   const [isLoading, setLoading] = useState(false);
@@ -40,9 +49,9 @@ const AdminCategories = ({ categories, loadCategories }) => {
         }}
         validationSchema={Yup.object().shape({
           name: Yup.string()
-            .required('Category name is required')
-            .min(3, 'New category name should have 3 characters or more')
-            .max(100, 'New category name should have 100 characters or less'),
+            .required(CATEGORY_REQUIRED)
+            .min(CATEGORY_MIN_LENGTH, CATEGORY_MIN_MESSAGE)
+            .max(CATEGORY_MAX_LENGTH, CATEGORY_MAX_MESSAGE),
         })}
         onSubmit={handleSubmit}>
         {() => <CategoryForm />}

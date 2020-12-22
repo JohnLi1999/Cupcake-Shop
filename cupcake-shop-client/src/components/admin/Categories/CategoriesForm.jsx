@@ -3,6 +3,7 @@ import { Form, Field, ErrorMessage } from 'formik';
 import { FormGroup, Button, Col } from 'react-bootstrap';
 
 import ErrorFeedback from '../../../common/UI/ErrorFeedback';
+import { CATEGORY_PLACEHOLDER } from '../../../constants/en';
 
 const CategoryForm = () => (
   <Form>
@@ -11,7 +12,7 @@ const CategoryForm = () => (
         className="form-control"
         type="text"
         name="name"
-        placeholder="Enter the new category name"
+        placeholder={CATEGORY_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="name" />

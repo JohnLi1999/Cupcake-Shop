@@ -4,6 +4,7 @@ import { FormGroup, Button, Col, Row } from 'react-bootstrap';
 
 import ErrorFeedback from '../../../common/UI/ErrorFeedback';
 import FormLabel from '../../../common/UI/FormLabel';
+import { NEW_PASSWORD_PLACEHOLDER } from '../../../constants/en';
 
 const UsersPasswordUpdateForm = () => (
   <Form>
@@ -13,7 +14,7 @@ const UsersPasswordUpdateForm = () => (
         className="form-control"
         type="password"
         name="newPassword"
-        placeholder="Please enter your new password"
+        placeholder={NEW_PASSWORD_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="newPassword" />

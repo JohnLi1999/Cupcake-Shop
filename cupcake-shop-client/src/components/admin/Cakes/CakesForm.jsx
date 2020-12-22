@@ -5,6 +5,13 @@ import { FormGroup, Button, Col, Row } from 'react-bootstrap';
 import ErrorFeedback from '../../../common/UI/ErrorFeedback';
 import FormLabel from '../../../common/UI/FormLabel';
 import { TODAY_SPECIAL, BEST_SELLING } from '../../../constants/constants';
+import {
+  CAKE_NAME_PLACEHOLDER,
+  CAKE_DESCRIPTION_PLACEHOLDER,
+  CAKE_PRICE_PLACEHOLDER,
+  CAKE_STOCK_PLACEHOLDER,
+  DEFAULT_CATEGORY_PLACEHOLDER,
+} from '../../../constants/en';
 
 const AdminCakesOperations = ({
   cake,
@@ -20,7 +27,7 @@ const AdminCakesOperations = ({
         className="form-control"
         type="text"
         name="name"
-        placeholder="Enter the name here"
+        placeholder={CAKE_NAME_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="name" />
@@ -32,7 +39,7 @@ const AdminCakesOperations = ({
         className="form-control"
         as="textarea"
         name="description"
-        placeholder="Enter the description here"
+        placeholder={CAKE_DESCRIPTION_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="description" />
@@ -44,7 +51,7 @@ const AdminCakesOperations = ({
         className="form-control"
         type="number"
         name="price"
-        placeholder="Enter the price here"
+        placeholder={CAKE_PRICE_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="price" />
@@ -56,7 +63,7 @@ const AdminCakesOperations = ({
         className="form-control"
         type="number"
         name="stock"
-        placeholder="Enter the stock here"
+        placeholder={CAKE_STOCK_PLACEHOLDER}
       />
       <ErrorFeedback>
         <ErrorMessage name="stock" />
@@ -113,7 +120,7 @@ const AdminCakesOperations = ({
     <FormGroup as={Col} md={{ span: 6, offset: 3 }}>
       <FormLabel>Category</FormLabel>
       <Field as="select" name="category" className="form-control">
-        <option value="default">--- Select a Category ---</option>
+        <option value="default">{DEFAULT_CATEGORY_PLACEHOLDER}</option>
         {categories.map(category => (
           <option key={category.name} value={category.name}>
             {category.name}
