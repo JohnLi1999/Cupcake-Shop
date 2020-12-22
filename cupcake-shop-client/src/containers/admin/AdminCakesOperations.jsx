@@ -102,12 +102,14 @@ const AdminCakesOperations = ({
     }
   };
 
+  const goBack = () => history.push('/admin/cakes');
+
   const isUpdate = !!location.state.update;
 
   return (
     <Container>
       <Row className="justify-content-end m-3">
-        <Button variant="warning" onClick={() => history.push('/admin/cakes')}>
+        <Button variant="warning" onClick={goBack}>
           Back to cake list
         </Button>
       </Row>
